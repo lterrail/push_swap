@@ -6,37 +6,37 @@
 /*   By: lucien <lucien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:37:48 by lucien            #+#    #+#             */
-/*   Updated: 2018/06/08 16:43:11 by lucien           ###   ########.fr       */
+/*   Updated: 2018/06/09 01:07:55 by lucien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		sa(t_push **p)
+int		sa(t_push **a)
 {
 	t_push *tmp;
 
-	if (*p && (*p)->next)
+	if (*a && (*a)->next)
 	{
-		tmp = (*p)->next;
-		(*p)->next = (*p)->next->next;
-		tmp->next = (*p);
-		(*p) = tmp;
+		tmp = (*a)->next;
+		(*a)->next = (*a)->next->next;
+		tmp->next = (*a);
+		(*a) = tmp;
 	}
 	ft_putendl("sa");
 	return (1);
 }
 
-int		sb(t_push **p)
+int		sb(t_push **b)
 {
 	t_push *tmp;
 
-	if (*p && (*p)->next)
+	if (*b && (*b)->next)
 	{
-		tmp = (*p)->next;
-		(*p)->next = (*p)->next->next;
-		tmp->next = (*p);
-		(*p) = tmp;
+		tmp = (*b)->next;
+		(*b)->next = (*b)->next->next;
+		tmp->next = (*b);
+		(*b) = tmp;
 	}
 	ft_putendl("sb");
 	return (1);

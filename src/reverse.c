@@ -6,39 +6,39 @@
 /*   By: lucien <lucien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 15:00:30 by lucien            #+#    #+#             */
-/*   Updated: 2018/06/08 16:43:33 by lucien           ###   ########.fr       */
+/*   Updated: 2018/06/09 01:05:42 by lucien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		rra(t_push **p)
+int		rra(t_push **a)
 {
 	t_push *tmp;
 
-	tmp = (*p);
+	tmp = (*a);
 	while (tmp->next && tmp->next->next)
 	{
 		tmp = tmp->next;
 	}
-	tmp->next->next = *p;
-	*p = tmp->next;
+	tmp->next->next = *a;
+	*a = tmp->next;
 	tmp->next = NULL;
 	ft_putendl("rra");
 	return (1);
 }
 
-int		rrb(t_push **p)
+int		rrb(t_push **b)
 {
 	t_push *tmp;
 
-	tmp = (*p);
+	tmp = (*b);
 	while (tmp->next && tmp->next->next)
 	{
 		tmp = tmp->next;
 	}
-	tmp->next->next = *p;
-	*p = tmp->next;
+	tmp->next->next = *b;
+	*b = tmp->next;
 	tmp->next = NULL;
 	ft_putendl("rrb");
 	return (1);

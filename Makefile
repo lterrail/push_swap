@@ -6,7 +6,7 @@
 #    By: lucien <lucien@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/06 11:25:50 by lucien            #+#    #+#              #
-#    Updated: 2018/06/08 16:37:37 by lucien           ###   ########.fr        #
+#    Updated: 2018/06/09 01:25:39 by lucien           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,8 @@ SRC1	=	push_swap.c			\
 			rotate.c			\
 			reverse.c			\
 			process.c			\
+			opti.c				\
+			sort.c				\
 			exception.c
 
 SRC2	=	exception.c			\

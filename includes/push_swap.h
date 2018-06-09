@@ -6,7 +6,7 @@
 /*   By: lucien <lucien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 11:08:47 by lucien            #+#    #+#             */
-/*   Updated: 2018/06/08 16:57:32 by lucien           ###   ########.fr       */
+/*   Updated: 2018/06/09 01:17:35 by lucien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@
 typedef struct		s_push
 {
 	int				value;
+	int				nb_int;
+	int				int_min;
 	struct s_push	*next;
 }					t_push;
 
@@ -81,27 +83,31 @@ void				ft_exception(char *s);
 ** push_swap -- operators
 */
 
-int					sa(t_push **p);
-int					sb(t_push **p);
+int					sa(t_push **a);
+int					sb(t_push **b);
 int					ss(t_push **a, t_push **b);
-void				pa(t_push **p1, t_push **p2);
-void				pb(t_push **p1, t_push **p2);
-int					ra(t_push **p);
-int					rb(t_push **p);
+void				pa(t_push **a, t_push **b);
+void				pb(t_push **a, t_push **b);
+int					ra(t_push **a);
+int					rb(t_push **b);
 int					rr(t_push **a, t_push **b);
-int					rra(t_push **p);
-int					rrb(t_push **p);
+int					rra(t_push **a);
+int					rrb(t_push **b);
 int					rrr(t_push **a, t_push **b);
 
 /*
 ** push_swap -- process
 */
 
-void				ft_process(t_push **listA, t_push **listB);
-int					get_mediane(t_push **listA);
+void				ft_process(t_push **a, t_push **b);
+int					get_mediane(t_push **a);
+int					get_int_min(t_push **a);
+
 
 /*
-** push_swap -- utils
+** push_swap -- opti
 */
+
+void				opti_int_min(t_push **a, t_push **b);
 
 #endif
