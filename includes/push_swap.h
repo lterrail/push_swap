@@ -6,7 +6,7 @@
 /*   By: lucien <lucien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 11:08:47 by lucien            #+#    #+#             */
-/*   Updated: 2018/06/09 01:17:35 by lucien           ###   ########.fr       */
+/*   Updated: 2018/06/10 01:10:15 by lucien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,14 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 
-# define BUFF_SIZE  32
+# define BUFF_SIZE 32
+#define SMALL_SIZE 3
+# define MEDIUM_SIZE 10
 
 typedef struct		s_push
 {
 	int				value;
-	int				nb_int;
-	int				int_min;
+	int				printed;
 	struct s_push	*next;
 }					t_push;
 
@@ -87,7 +88,7 @@ int					sa(t_push **a);
 int					sb(t_push **b);
 int					ss(t_push **a, t_push **b);
 void				pa(t_push **a, t_push **b);
-void				pb(t_push **a, t_push **b);
+void				pb(t_push **b, t_push **a);
 int					ra(t_push **a);
 int					rb(t_push **b);
 int					rr(t_push **a, t_push **b);
@@ -100,14 +101,24 @@ int					rrr(t_push **a, t_push **b);
 */
 
 void				ft_process(t_push **a, t_push **b);
-int					get_mediane(t_push **a);
-int					get_int_min(t_push **a);
-
+void				sort_3less_int(t_push **a, int len, int int_min,
+					int int_max);
+void				sort_20less_int(t_push **a, t_push **b, int len);
+void				quick_sort(t_push **a, t_push **b, int len);
 
 /*
-** push_swap -- opti
+**push_swap -- quick_sprt
 */
 
-void				opti_int_min(t_push **a, t_push **b);
+void				split_mediane(t_push **a, t_push **b, int len, int quartile);
+
+/*
+** push_swap -- get_data
+*/
+
+int					get_min(t_push **a);
+int					get_max(t_push **a);
+int					get_len(t_push **a);
+int					get_mediane(t_push **a, int len);
 
 #endif
