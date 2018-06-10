@@ -6,7 +6,7 @@
 /*   By: lucien <lucien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 15:55:23 by lucien            #+#    #+#             */
-/*   Updated: 2018/06/10 01:16:30 by lucien           ###   ########.fr       */
+/*   Updated: 2018/06/10 15:52:37 by lucien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void		ft_process(t_push **a, t_push **b)
 	if (len < SMALL_SIZE)
 		sort_3less_int(a, len, int_min, int_max);
 	else if (len < MEDIUM_SIZE)
-		sort_20less_int(a, b, len);
+		sort_selec_a(a, b, len);
 	else
 		quick_sort(a, b, len);
 }
@@ -54,15 +54,18 @@ void		sort_3less_int(t_push **a, int len, int int_min, int int_max)
 	}
 }
 
-void		sort_20less_int(t_push **a, t_push **b, int len)
+void		sort_selec_a(t_push **a, t_push **b, int len)
 {
 	int		int_min;
 	int		lenght;
+	int		p_intmin;
 
 	while ((*a) != NULL && ft_is_sort_increasing(*a) != 1)
 	{
 		if ((*a)->value == (int_min = get_min(a)))
 			pb(a, b);
+		else if ((p_intmin = get_position_int(a, int_min)) > len / 2)
+			rra(a);
 		else
 			ra(a);
 	}
@@ -70,11 +73,32 @@ void		sort_20less_int(t_push **a, t_push **b, int len)
 		pa(a, b);
 }
 
+void		sort_selec_b(t_push **a, t_push **b)
+{
+	int		int_max;
+
+	while ((*b) != NULL && ft_is_sort_decreasing(*b) != 1)
+	{
+		if ((*b)->value == (int_max = get_max(b)))
+			pa(a, b);
+		else
+			rb(b);
+	}
+	while ((*b) != NULL)
+		pa(a, b);
+}
+
 void		quick_sort(t_push **a, t_push **b, int len)
 {
 	int		quartile;
+	int		b_mediane;
+	int		top_b;
 
 	quartile = get_mediane(a, len / 4);
-	split_mediane(a, b, len, quartile);
-
+	send_to_b_low_int(a, b, len, quartile);
+	b_mediane = get_mediane(b, (get_len(b) / 2));
+	top_b = solve_quicksort(a, b, b_mediane);
+	while (top_b > (*a)->value)
+		pb(a, b);
+	sort_selec_b(a, b);
 }

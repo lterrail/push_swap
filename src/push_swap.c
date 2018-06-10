@@ -6,7 +6,7 @@
 /*   By: lucien <lucien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 11:17:21 by lucien            #+#    #+#             */
-/*   Updated: 2018/06/10 00:00:07 by lucien           ###   ########.fr       */
+/*   Updated: 2018/06/10 14:27:47 by lucien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,12 +57,7 @@ int		main(int argc, char **argv)
 	if (!ft_valid_list(listA))
 		ft_exception("Error");
 	ft_process(&listA, &listB);
-
-/*
-**print solution
-*/
-
-	int i;
+/*	int i;
 
 	i = 1;
 	while (listA != NULL)
@@ -73,9 +68,9 @@ int		main(int argc, char **argv)
 			listB = listB->next;
 		}
 		else
-			printf("A%d : %d\n",i ,listA->value);
+			printf("A %d : %d\n",i ,listA->value);
 		listA = listA->next;
 		i++;
-	}
+	}*/
 	return (0);
 }

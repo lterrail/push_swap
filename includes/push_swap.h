@@ -6,7 +6,7 @@
 /*   By: lucien <lucien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 11:08:47 by lucien            #+#    #+#             */
-/*   Updated: 2018/06/10 01:10:15 by lucien           ###   ########.fr       */
+/*   Updated: 2018/06/10 15:13:43 by lucien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,18 @@
 # include <sys/stat.h>
 
 # define BUFF_SIZE 32
-#define SMALL_SIZE 3
-# define MEDIUM_SIZE 10
+#define SMALL_SIZE 4
+# define MEDIUM_SIZE 30
+
+//5 = 1583
+//10 = 1422
+//15 = 1390
+//20 = 1362
+//25 = 1355
+//30 = 1300
+//35 = 1308
+//40 = 1403
+//101 = 2885
 
 typedef struct		s_push
 {
@@ -103,14 +113,17 @@ int					rrr(t_push **a, t_push **b);
 void				ft_process(t_push **a, t_push **b);
 void				sort_3less_int(t_push **a, int len, int int_min,
 					int int_max);
-void				sort_20less_int(t_push **a, t_push **b, int len);
+void				sort_selec_a(t_push **a, t_push **b, int len);
+void				sort_selec_b(t_push **a, t_push **b);
 void				quick_sort(t_push **a, t_push **b, int len);
 
 /*
 **push_swap -- quick_sprt
 */
 
-void				split_mediane(t_push **a, t_push **b, int len, int quartile);
+void				send_to_b_low_int(t_push **a, t_push **b, int len,
+					int quartile);
+int					solve_quicksort(t_push **a, t_push **b, int mediane);
 
 /*
 ** push_swap -- get_data
@@ -119,6 +132,7 @@ void				split_mediane(t_push **a, t_push **b, int len, int quartile);
 int					get_min(t_push **a);
 int					get_max(t_push **a);
 int					get_len(t_push **a);
+int					get_position_int(t_push **a, int nb);
 int					get_mediane(t_push **a, int len);
 
 #endif

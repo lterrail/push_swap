@@ -6,7 +6,7 @@
 /*   By: lucien <lucien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/09 01:13:24 by lucien            #+#    #+#             */
-/*   Updated: 2018/06/10 00:48:42 by lucien           ###   ########.fr       */
+/*   Updated: 2018/06/10 15:14:12 by lucien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,21 @@ int			get_len(t_push **a)
 	return (len);
 }
 
+int			get_position_int(t_push **a, int nb)
+{
+	t_push	*tmp;
+	int		position;
+
+	position = 0;
+	tmp = (*a);
+	while (tmp != NULL && tmp->value != (nb))
+	{
+		tmp = tmp->next;
+		position++;
+	}
+	return (position);
+}
+
 int			get_mediane(t_push **a, int len)
 {
 	t_push	*tmp;
@@ -80,7 +95,5 @@ int			get_mediane(t_push **a, int len)
 		mediane = int_min;
 		len--;
 	}
-	printf("mediane %d\n", mediane);
-	printf("value %d\n", (*a)->value);
 	return (mediane);
 }

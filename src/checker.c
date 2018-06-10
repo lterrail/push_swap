@@ -6,7 +6,7 @@
 /*   By: lucien <lucien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 15:25:21 by lucien            #+#    #+#             */
-/*   Updated: 2018/06/08 11:32:27 by lucien           ###   ########.fr       */
+/*   Updated: 2018/06/10 14:06:38 by lucien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,23 +66,5 @@ int		main(int argc, char **argv)
 		ft_putendl("OK");
 	else
 		ft_putendl("KO");
-	/*
-	** Pour afficher la liste;
-	*/
-	int i;
-
-	i = 1;
-	while (listA != NULL)
-	{
-		if (listB)
-		{
-			printf("A %d : %d   B %d : %d\n",i ,listA->value, i, listB->value);
-			listB = listB->next;
-		}
-		else
-			printf("A%d : %d\n",i ,listA->value);
-		listA = listA->next;
-		i++;
-	}
 	return (0);
 }
