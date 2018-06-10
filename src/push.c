@@ -6,7 +6,7 @@
 /*   By: lucien <lucien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:23:26 by lucien            #+#    #+#             */
-/*   Updated: 2018/06/09 19:41:36 by lucien           ###   ########.fr       */
+/*   Updated: 2018/06/10 20:20:11 by lucien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	pa(t_push **a, t_push **b)
 {
-	t_push *tmp;
+	t_push	*tmp;
 
 	if (*b)
 	{
@@ -28,7 +28,7 @@ void	pa(t_push **a, t_push **b)
 
 void	pb(t_push **b, t_push **a)
 {
-	t_push *tmp;
+	t_push	*tmp;
 
 	if (*b)
 	{

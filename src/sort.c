@@ -6,13 +6,13 @@
 /*   By: jsobel <jsobel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 18:14:53 by jsobel            #+#    #+#             */
-/*   Updated: 2018/06/09 01:30:12 by lucien           ###   ########.fr       */
+/*   Updated: 2018/06/10 20:20:53 by lucien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int				ft_is_sort_increasing(t_push *p)
+int			ft_is_sort_increasing(t_push *p)
 {
 	while (p && p->next)
 	{
@@ -23,7 +23,7 @@ int				ft_is_sort_increasing(t_push *p)
 	return (1);
 }
 
-int				ft_is_sort_decreasing(t_push *p)
+int			ft_is_sort_decreasing(t_push *p)
 {
 	while (p && p->next)
 	{

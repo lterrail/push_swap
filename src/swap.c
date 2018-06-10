@@ -6,7 +6,7 @@
 /*   By: lucien <lucien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:37:48 by lucien            #+#    #+#             */
-/*   Updated: 2018/06/09 01:07:55 by lucien           ###   ########.fr       */
+/*   Updated: 2018/06/10 20:21:01 by lucien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		sa(t_push **a)
 {
-	t_push *tmp;
+	t_push	*tmp;
 
 	if (*a && (*a)->next)
 	{
@@ -29,7 +29,7 @@ int		sa(t_push **a)
 
 int		sb(t_push **b)
 {
-	t_push *tmp;
+	t_push	*tmp;
 
 	if (*b && (*b)->next)
 	{

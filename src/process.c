@@ -6,7 +6,7 @@
 /*   By: lucien <lucien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 15:55:23 by lucien            #+#    #+#             */
-/*   Updated: 2018/06/10 15:52:37 by lucien           ###   ########.fr       */
+/*   Updated: 2018/06/10 20:14:00 by lucien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,17 @@ void		sort_selec_a(t_push **a, t_push **b, int len)
 void		sort_selec_b(t_push **a, t_push **b)
 {
 	int		int_max;
+	int		p_intmax;
+	int		len;
 
+	p_intmax = 0;
+	len = (get_len(b));
 	while ((*b) != NULL && ft_is_sort_decreasing(*b) != 1)
 	{
 		if ((*b)->value == (int_max = get_max(b)))
 			pa(a, b);
+		else if ((p_intmax = get_position_int(b, int_max)) > len / 2)
+			rrb(b);
 		else
 			rb(b);
 	}
@@ -92,13 +98,10 @@ void		quick_sort(t_push **a, t_push **b, int len)
 {
 	int		quartile;
 	int		b_mediane;
-	int		top_b;
 
 	quartile = get_mediane(a, len / 4);
 	send_to_b_low_int(a, b, len, quartile);
-	b_mediane = get_mediane(b, (get_len(b) / 2));
-	top_b = solve_quicksort(a, b, b_mediane);
-	while (top_b > (*a)->value)
-		pb(a, b);
+	b_mediane = get_mediane(b, (get_len(b) / 6 * 5));
+	solve_quicksort(a, b, b_mediane);
 	sort_selec_b(a, b);
 }

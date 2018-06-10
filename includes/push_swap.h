@@ -6,7 +6,7 @@
 /*   By: lucien <lucien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 11:08:47 by lucien            #+#    #+#             */
-/*   Updated: 2018/06/10 15:13:43 by lucien           ###   ########.fr       */
+/*   Updated: 2018/06/10 20:18:01 by lucien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,18 +35,8 @@
 # include <sys/stat.h>
 
 # define BUFF_SIZE 32
-#define SMALL_SIZE 4
-# define MEDIUM_SIZE 30
-
-//5 = 1583
-//10 = 1422
-//15 = 1390
-//20 = 1362
-//25 = 1355
-//30 = 1300
-//35 = 1308
-//40 = 1403
-//101 = 2885
+# define SMALL_SIZE 4
+# define MEDIUM_SIZE 20
 
 typedef struct		s_push
 {
@@ -87,10 +77,6 @@ int					get_next_line(const int fd, char **line);
 void				ft_exception(char *s);
 
 /*
-** push_swap -- checks
-*/
-
-/*
 ** push_swap -- operators
 */
 
@@ -121,8 +107,7 @@ void				quick_sort(t_push **a, t_push **b, int len);
 **push_swap -- quick_sprt
 */
 
-void				send_to_b_low_int(t_push **a, t_push **b, int len,
-					int quartile);
+void				send_to_b_low_int(t_push **a, t_push **b, int len, int quartile);
 int					solve_quicksort(t_push **a, t_push **b, int mediane);
 
 /*
@@ -134,5 +119,12 @@ int					get_max(t_push **a);
 int					get_len(t_push **a);
 int					get_position_int(t_push **a, int nb);
 int					get_mediane(t_push **a, int len);
+
+/*
+**puhs_swap -- opti
+*/
+
+int					get_max_moins_un(t_push **a, t_push **b, int max_b);
+int					save_newintmax_in_top_a(t_push **a, t_push **b);
 
 #endif

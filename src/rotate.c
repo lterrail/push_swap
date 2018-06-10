@@ -6,7 +6,7 @@
 /*   By: lucien <lucien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:27:58 by lucien            #+#    #+#             */
-/*   Updated: 2018/06/09 01:06:40 by lucien           ###   ########.fr       */
+/*   Updated: 2018/06/10 20:20:44 by lucien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int		ra(t_push **a)
 {
-	t_push *tmp;
+	t_push	*tmp;
 
 	tmp = (*a);
 	while (tmp->next)
@@ -30,7 +30,7 @@ int		ra(t_push **a)
 
 int		rb(t_push **b)
 {
-	t_push *tmp;
+	t_push	*tmp;
 
 	tmp = (*b);
 	while (tmp->next)
@@ -46,8 +46,8 @@ int		rb(t_push **b)
 
 int		rr(t_push **a, t_push **b)
 {
-	t_push *tmp;
-	t_push *tmp2;
+	t_push	*tmp;
+	t_push	*tmp2;
 
 	tmp = (*a);
 	tmp2 = (*b);
