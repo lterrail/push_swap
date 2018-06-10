@@ -6,7 +6,7 @@
 /*   By: lucien <lucien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 11:08:47 by lucien            #+#    #+#             */
-/*   Updated: 2018/06/10 20:18:01 by lucien           ###   ########.fr       */
+/*   Updated: 2018/06/10 22:48:40 by lucien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 
 # define BUFF_SIZE 32
 # define SMALL_SIZE 4
-# define MEDIUM_SIZE 20
+# define MEDIUM_SIZE 16
 
 typedef struct		s_push
 {
