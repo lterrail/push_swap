@@ -6,7 +6,7 @@
 /*   By: jsobel <jsobel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 18:21:09 by jsobel            #+#    #+#             */
-/*   Updated: 2018/06/07 20:06:02 by jsobel           ###   ########.fr       */
+/*   Updated: 2018/06/11 16:23:57 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,3 @@ void	ft_check_op(char *op, t_push **listA, t_push **listB)
 	else if (!ft_strcmp(op, "rrr") && ft_reverse_rotate(listA))
 		ft_reverse_rotate(listB);
 }
-
-/*
-** sa sb ss pa pb ra rrb rr rra rrb rrr
-** foret de if a remplacer par pointeurs sur fonctions
-*/

@@ -6,7 +6,7 @@
 /*   By: lucien <lucien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 11:08:47 by lucien            #+#    #+#             */
-/*   Updated: 2018/06/10 22:48:40 by lucien           ###   ########.fr       */
+/*   Updated: 2018/06/11 17:21:24 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void				quick_sort(t_push **a, t_push **b, int len);
 */
 
 void				send_to_b_low_int(t_push **a, t_push **b, int len, int quartile);
-int					solve_quicksort(t_push **a, t_push **b, int mediane);
+void				solve_quicksort(t_push **a, t_push **b);
 
 /*
 ** push_swap -- get_data
@@ -124,7 +124,7 @@ int					get_mediane(t_push **a, int len);
 **puhs_swap -- opti
 */
 
-int					get_max_moins_un(t_push **a, t_push **b, int max_b);
-int					save_newintmax_in_top_a(t_push **a, t_push **b);
+int					get_max_moins_un(t_push **a, int max_b);
+void				place_max_moins_un(t_push **a, t_push **b, int max);
 
 #endif

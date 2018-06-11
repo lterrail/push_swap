@@ -6,7 +6,7 @@
 /*   By: lucien <lucien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 15:25:21 by lucien            #+#    #+#             */
-/*   Updated: 2018/06/10 14:06:38 by lucien           ###   ########.fr       */
+/*   Updated: 2018/06/11 16:22:47 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static t_push	*ft_creat_list(int argc, char **argv)
 	return (p);
 }
 
-int		main(int argc, char **argv)
+int				main(int argc, char **argv)
 {
 	t_push	*listA;
 	t_push	*listB;

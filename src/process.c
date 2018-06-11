@@ -6,7 +6,7 @@
 /*   By: lucien <lucien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 15:55:23 by lucien            #+#    #+#             */
-/*   Updated: 2018/06/10 22:53:17 by lucien           ###   ########.fr       */
+/*   Updated: 2018/06/11 17:22:45 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,11 +97,12 @@ void		sort_selec_b(t_push **a, t_push **b)
 void		quick_sort(t_push **a, t_push **b, int len)
 {
 	int		quartile;
-	int		b_mediane;
+	int		max;
 
+	max = 0;
 	quartile = get_mediane(a, len / 3);
 	send_to_b_low_int(a, b, len, quartile);
-	b_mediane = get_mediane(b, (get_len(b) / 6 * 5));
-	solve_quicksort(a, b, b_mediane);
+	pb(a, b);
+	solve_quicksort(a, b);
 	sort_selec_b(a, b);
 }
