@@ -6,7 +6,7 @@
 /*   By: lucien <lucien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 15:55:23 by lucien            #+#    #+#             */
-/*   Updated: 2018/06/11 17:22:45 by lterrail         ###   ########.fr       */
+/*   Updated: 2018/06/12 18:39:18 by lucien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void		ft_process(t_push **a, t_push **b)
 	if (len < SMALL_SIZE)
 		sort_3less_int(a, len, int_min, int_max);
 	else if (len < MEDIUM_SIZE)
-		sort_selec_a(a, b, len);
+		basic_selective_sort(a, b, len);
 	else
-		quick_sort(a, b, len);
+		launch_quick_sort(a, b);
 }
 
 void		sort_3less_int(t_push **a, int len, int int_min, int int_max)
@@ -54,7 +54,7 @@ void		sort_3less_int(t_push **a, int len, int int_min, int int_max)
 	}
 }
 
-void		sort_selec_a(t_push **a, t_push **b, int len)
+void		basic_selective_sort(t_push **a, t_push **b, int len)
 {
 	int		int_min;
 	int		lenght;
@@ -73,36 +73,10 @@ void		sort_selec_a(t_push **a, t_push **b, int len)
 		pa(a, b);
 }
 
-void		sort_selec_b(t_push **a, t_push **b)
+void		launch_quick_sort(t_push **a, t_push **b)
 {
-	int		int_max;
-	int		p_intmax;
-	int		len;
-
-	p_intmax = 0;
-	len = (get_len(b));
-	while ((*b) != NULL && ft_is_sort_decreasing(*b) != 1)
-	{
-		if ((*b)->value == (int_max = get_max(b)))
-			pa(a, b);
-		else if ((p_intmax = get_position_int(b, int_max)) > len / 2)
-			rrb(b);
-		else
-			rb(b);
-	}
+	process_distri_pyramid(a, b);
+	process_selec_sort_opti(a, b, 0);
 	while ((*b) != NULL)
 		pa(a, b);
-}
-
-void		quick_sort(t_push **a, t_push **b, int len)
-{
-	int		quartile;
-	int		max;
-
-	max = 0;
-	quartile = get_mediane(a, len / 3);
-	send_to_b_low_int(a, b, len, quartile);
-	pb(a, b);
-	solve_quicksort(a, b);
-	sort_selec_b(a, b);
 }

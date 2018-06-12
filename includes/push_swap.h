@@ -6,7 +6,7 @@
 /*   By: lucien <lucien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 11:08:47 by lucien            #+#    #+#             */
-/*   Updated: 2018/06/11 17:21:24 by lterrail         ###   ########.fr       */
+/*   Updated: 2018/06/12 18:36:39 by lucien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@
 
 # define BUFF_SIZE 32
 # define SMALL_SIZE 4
-# define MEDIUM_SIZE 16
+# define MEDIUM_SIZE 11
 
 typedef struct		s_push
 {
@@ -60,6 +60,7 @@ typedef struct		s_data
 int					ft_is_sort_increasing(t_push *p);
 int					ft_is_sort_decreasing(t_push *p);
 void				ft_check_op(char *op, t_push **listA, t_push **listB);
+int					ft_sort(t_push **a, t_push **b, int sort);
 
 /*
 ** checker -- operators
@@ -99,16 +100,18 @@ int					rrr(t_push **a, t_push **b);
 void				ft_process(t_push **a, t_push **b);
 void				sort_3less_int(t_push **a, int len, int int_min,
 					int int_max);
-void				sort_selec_a(t_push **a, t_push **b, int len);
-void				sort_selec_b(t_push **a, t_push **b);
-void				quick_sort(t_push **a, t_push **b, int len);
+void				basic_selective_sort(t_push **a, t_push **b, int len);
+void				launch_quick_sort(t_push **a, t_push **b);
 
 /*
-**push_swap -- quick_sprt
+**push_swap -- quick_sort
 */
 
-void				send_to_b_low_int(t_push **a, t_push **b, int len, int quartile);
-void				solve_quicksort(t_push **a, t_push **b);
+void				process_distri_pyramid(t_push **a, t_push **b);
+void				process_selec_sort_opti(t_push **a, t_push **b, int sort);
+int					opti_get_max_moins_un(t_push **a, int max_b);
+void				opti_place_ints_max(t_push **a, t_push **b, int ret);
+void				opti_clear_bottom(t_push **a, int div_mediane);
 
 /*
 ** push_swap -- get_data
@@ -119,12 +122,5 @@ int					get_max(t_push **a);
 int					get_len(t_push **a);
 int					get_position_int(t_push **a, int nb);
 int					get_mediane(t_push **a, int len);
-
-/*
-**puhs_swap -- opti
-*/
-
-int					get_max_moins_un(t_push **a, int max_b);
-void				place_max_moins_un(t_push **a, t_push **b, int max);
 
 #endif

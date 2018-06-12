@@ -6,58 +6,128 @@
 /*   By: lucien <lucien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 00:12:58 by lucien            #+#    #+#             */
-/*   Updated: 2018/06/11 17:14:55 by lterrail         ###   ########.fr       */
+/*   Updated: 2018/06/12 18:40:28 by lucien           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void		send_to_b_low_int(t_push **a, t_push **b, int len, int quartile)
+void		process_distri_pyramid(t_push **a, t_push **b)
 {
-	int		mediane;
-	int		half;
+	int		div_mediane;
 
-	half = len / 2 + 1;
-	mediane = get_mediane(a, half);
-	while ((*a) && get_len(a) >= half + 1)
+	if ((div_mediane = get_len(a) / 100) <= 2)
+		div_mediane = 3;
+	opti_clear_bottom(a, div_mediane);
+	while (get_len(a) > MEDIUM_SIZE)
 	{
-		if ((*a)->value < mediane && (*a)->value < quartile)
+		if ((*a)->value < get_mediane(a, get_len(a) / div_mediane / 2))
 		{
 			pb(a, b);
 			rb(b);
 		}
-		else if ((*a)->value < mediane)
+		else if ((*a)->value < get_mediane(a, get_len(a) / div_mediane))
 			pb(a, b);
 		else
 			ra(a);
 	}
-	if (get_len(a) < MEDIUM_SIZE)
-		sort_selec_a(a, b, get_len(a));
-	else
-		send_to_b_low_int(a, b, get_len(a), quartile);
+	basic_selective_sort(a, b, get_len(a));
 }
 
-void		solve_quicksort(t_push **a, t_push **b)
+void		process_selec_sort_opti(t_push **a, t_push **b, int sort)
 {
 	int		max;
 	int		max2;
-	int		dixieme;
 	int		p_intmax;
-	int		mediane;
+	int		ret;
 
-	dixieme = get_len(b) / 10 * 9;
-	mediane = get_mediane(b, dixieme);
-	while (get_len(b) > MEDIUM_SIZE)
+	ret = 0;
+	while ((*b) != NULL && ft_sort(a, b, sort) != 1)
 	{
-		if (get_len(b) <= dixieme + 1)
-			solve_quicksort(a, b);
 		if ((*b)->value == (max = get_max(b)))
+		{
+			opti_place_ints_max(a, b, ret);
+			ret = 0;
+		}
+		else if ((*b)->value == (max2 = opti_get_max_moins_un(b, max)))
+		{
 			pa(a, b);
-		else if ((*b)->value == (max2 = get_max_moins_un(b, max)))
-			place_max_moins_un(a, b, max);
+			ret++;
+		}
 		else if ((p_intmax = get_position_int(b, get_max(b))) > get_len(b) / 2)
 			rrb(b);
 		else
 			rb(b);
+	}
+}
+
+void		opti_clear_bottom(t_push **a, int div_mediane)
+{
+	t_push	*tmp;
+	int		len;
+	int		i;
+
+	i = 0;
+	len = get_len(a) / 10 * 9;
+	tmp = (*a);
+	while (len--)
+		tmp = tmp->next;
+	while (tmp != NULL)
+	{
+		if (tmp->value < get_mediane(a, get_len(a) / div_mediane / 2))
+			i++;
+		tmp = tmp->next;
+	}
+	if (i >= (div_mediane))
+	{
+		while (i > 0)
+		{
+			rra(a);
+			i--;
+		}
+	}
+}
+
+int			opti_get_max_moins_un(t_push **a, int max_b)
+{
+	t_push	*tmp;
+	int		int_max;
+
+	int_max = 0;
+	tmp = (*a);
+	while (tmp != NULL)
+	{
+		if (int_max < tmp->value && tmp->value < max_b)
+			int_max = tmp->value;
+		tmp = tmp->next;
+	}
+	return (int_max);
+}
+
+void		opti_place_ints_max(t_push **a, t_push **b, int ret)
+{
+	int ret2;
+
+	ret2 = ret;
+	if (ret == 0)
+		pa(a, b);
+	else if (ret == 1)
+	{
+		pa(a, b);
+		sa(a);
+	}
+	else if (ret > 1)
+	{
+		while (ret > 0)
+		{
+			ra(a);
+			ret--;
+		}
+		pa(a, b);
+		while (ret2 > 0)
+		{
+			rra(a);
+			ret2--;
+		}
 	}
 }
