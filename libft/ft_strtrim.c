@@ -3,39 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lterrail <lterrail@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hben-yah <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/03 16:38:13 by lterrail          #+#    #+#             */
-/*   Updated: 2018/04/11 17:44:45 by lterrail         ###   ########.fr       */
+/*   Created: 2018/04/04 17:20:58 by hben-yah          #+#    #+#             */
+/*   Updated: 2018/04/04 17:20:59 by hben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char		*ft_strtrim(const char *s)
+char	*ft_strtrim(char const *s)
 {
-	char	*new;
-	int		size;
-	int		n;
-	int		i;
+	size_t	len;
+	char	*res;
 
-	i = 0;
-	size = 0;
 	if (!s)
 		return (NULL);
-	while (s[i] == ' ' || s[i] == '\t' || s[i] == '\n')
-		i++;
-	while (s[i + size])
-		size++;
-	size--;
-	while (size >= 0 &&
-			(s[i + size] == ' ' || s[i + size] == '\t' || s[i + size] == '\n'))
-		size--;
-	if (!(new = malloc(++size + 1)))
+	len = ft_strlen(s);
+	while (ft_isspace_wnt(s[len - 1]))
+		--len;
+	while (ft_isspace_wnt(*s) && len--)
+		++s;
+	if ((int)len < 0)
+		len = 0;
+	if (!(res = ft_strnew(len)))
 		return (NULL);
-	n = -1;
-	while (++n < size)
-		new[n] = s[i + n];
-	new[size] = '\0';
-	return (new);
+	ft_strncpy(res, s, len);
+	return (res);
 }

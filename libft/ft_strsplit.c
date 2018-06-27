@@ -3,75 +3,66 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strsplit.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lterrail <lterrail@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hben-yah <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/03 16:36:16 by lterrail          #+#    #+#             */
-/*   Updated: 2018/04/11 17:44:29 by lterrail         ###   ########.fr       */
+/*   Created: 2018/04/04 17:21:14 by hben-yah          #+#    #+#             */
+/*   Updated: 2018/04/04 17:21:16 by hben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_count_words(const char *s, char c)
+static int		ft_wrdcnt(const char *s, char c)
 {
-	int	i;
-	int	words;
+	int		res;
 
-	i = 0;
-	words = 0;
-	while (s[i] == c)
-		i++;
-	while (s[i])
+	if (!s)
+		return (0);
+	res = 1;
+	while (*s)
 	{
-		if ((s[i] == c && s[i + 1] != c) || s[i + 1] == '\0')
-			words++;
-		i++;
+		if (*s == c && *(s + 1) != c && *(s + 1))
+			++res;
+		++s;
 	}
-	return (words);
+	return (res);
 }
 
-static int		ft_count_letters(const char *s, char c)
+static size_t	ft_wrdlen(const char *s, char c)
 {
-	int	i;
-	int	j;
+	const char *d;
 
-	i = 0;
-	j = 0;
-	while (s[i] == c)
-		i++;
-	while (s[i] != c && s[i])
-	{
-		j++;
-		i++;
-	}
-	return (j);
+	d = s;
+	while (*d != c && *d)
+		++d;
+	return ((size_t)(d - s));
 }
 
 char			**ft_strsplit(char const *s, char c)
 {
-	int		i_mots;
-	int		tot_mots;
-	int		ligne;
-	char	**tab;
+	char	**res;
 	int		i;
+	int		j;
 
-	i = 0;
-	i_mots = 0;
 	if (!s)
 		return (NULL);
-	tot_mots = ft_count_words(s, c);
-	if (!(tab = malloc(sizeof(char *) * (tot_mots + 1))))
-		return (0);
-	while (i_mots < tot_mots)
+	if (!(res = (char **)ft_memalloc(sizeof(char *) * (ft_wrdcnt(s, c) + 1))))
+		return (NULL);
+	i = -1;
+	while (*s)
 	{
-		while (s[i] == c)
-			i++;
-		tab[i_mots] = malloc(sizeof(char) * (ft_count_letters(s + i, c) + 1));
-		ligne = 0;
-		while (s[i] && s[i] != c)
-			tab[i_mots][ligne++] = s[i++];
-		tab[i_mots++][ligne] = '\0';
+		if (*s != c)
+		{
+			if (i == -1 || *(s - 1) == c)
+			{
+				j = 0;
+				if (!(res[++i] = ft_strnew(ft_wrdlen(s, c))))
+					return (NULL);
+			}
+			res[i][j++] = *s;
+		}
+		++s;
 	}
-	tab[i_mots] = 0;
-	return (tab);
+	res[i + 1] = 0;
+	return (res);
 }

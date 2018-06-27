@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd1.c                                    :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lterrail <lterrail@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hben-yah <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/03 16:26:12 by lterrail          #+#    #+#             */
-/*   Updated: 2018/04/11 17:09:42 by lterrail         ###   ########.fr       */
+/*   Created: 2018/04/04 17:23:01 by hben-yah          #+#    #+#             */
+/*   Updated: 2018/04/04 17:23:03 by hben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include "libft.h"
 
 void	ft_putstr_fd(char const *s, int fd)
 {
-	write(fd, s, ft_strlen((char *)s));
+	if (s)
+		write(fd, s, ft_strlen(s));
 }

@@ -6,7 +6,7 @@
 /*   By: lucien <lucien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:37:48 by lucien            #+#    #+#             */
-/*   Updated: 2018/06/10 20:21:01 by lucien           ###   ########.fr       */
+/*   Updated: 2018/06/20 13:52:59 by jsobel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,53 +14,49 @@
 
 int		sa(t_push **a)
 {
-	t_push	*tmp;
-
+	ft_swap(a);
 	if (*a && (*a)->next)
 	{
-		tmp = (*a)->next;
-		(*a)->next = (*a)->next->next;
-		tmp->next = (*a);
-		(*a) = tmp;
+		(*a)->count++;
+		if ((*a)->display)
+			ft_putendl("sa");
 	}
-	ft_putendl("sa");
 	return (1);
 }
 
 int		sb(t_push **b)
 {
-	t_push	*tmp;
-
+	ft_swap(b);
 	if (*b && (*b)->next)
 	{
-		tmp = (*b)->next;
-		(*b)->next = (*b)->next->next;
-		tmp->next = (*b);
-		(*b) = tmp;
+		(*b)->count++;
+		if ((*b)->display)
+			ft_putendl("sb");
 	}
-	ft_putendl("sb");
 	return (1);
 }
 
 int		ss(t_push **a, t_push **b)
 {
-	t_push *tmp;
-	t_push *tmp2;
-
-	if (*a && (*a)->next)
+	ft_swap(a);
+	ft_swap(b);
+	if (*a && *b && (*a)->next && (*b)->next)
 	{
-		tmp = (*a)->next;
-		(*a)->next = (*a)->next->next;
-		tmp->next = (*a);
-		(*a) = tmp;
+		(*a)->count++;
+		if ((*a)->display)
+			ft_putendl("ss");
 	}
-	if (*b && (*b)->next)
+	else if (*a && (*a)->next)
 	{
-		tmp2 = (*b)->next;
-		(*b)->next = (*b)->next->next;
-		tmp2->next = (*b);
-		(*b) = tmp2;
+		(*a)->count++;
+		if ((*a)->display)
+			ft_putendl("sa");
 	}
-	ft_putendl("ss");
+	else if (*b && (*b)->next)
+	{
+		(*b)->count++;
+		if ((*b)->display)
+			ft_putendl("sb");
+	}
 	return (1);
 }

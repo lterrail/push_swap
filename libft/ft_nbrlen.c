@@ -1,30 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_intlen.c                                        :+:      :+:    :+:   */
+/*   ft_nbrlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lterrail <lterrail@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hben-yah <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/11 18:09:40 by lterrail          #+#    #+#             */
-/*   Updated: 2018/04/11 18:38:37 by lterrail         ###   ########.fr       */
+/*   Created: 2018/04/09 18:06:46 by hben-yah          #+#    #+#             */
+/*   Updated: 2018/04/09 18:06:48 by hben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_nbrlen(int n)
+size_t	ft_nbrlen(int nbr, int base_len)
 {
-	int		i;
-	long	nombre;
+	size_t			len;
+	unsigned int	n;
 
-	nombre = n;
-	i = 0;
-	if (nombre == 0)
-		return (1);
-	while (nombre != 0)
-	{
-		nombre = nombre / 10;
-		i++;
-	}
-	return (i);
+	len = 1;
+	n = (unsigned int)nbr;
+	if (nbr < 0)
+		n *= -1;
+	while (n /= base_len)
+		++len;
+	return (len);
 }

@@ -6,7 +6,7 @@
 /*   By: lucien <lucien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 15:55:23 by lucien            #+#    #+#             */
-/*   Updated: 2018/06/12 18:39:18 by lucien           ###   ########.fr       */
+/*   Updated: 2018/06/19 19:56:52 by jsobel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void		ft_process(t_push **a, t_push **b)
 	int		int_max;
 	int		len;
 
-	int_min = get_min(a);
-	int_max = get_max(a);
-	len = get_len(a);
+	int_min = get_min(*a);
+	int_max = get_max(*a);
+	len = get_len(*a);
 	if (len < SMALL_SIZE)
 		sort_3less_int(a, len, int_min, int_max);
 	else if (len < MEDIUM_SIZE)
@@ -62,21 +62,21 @@ void		basic_selective_sort(t_push **a, t_push **b, int len)
 
 	while ((*a) != NULL && ft_is_sort_increasing(*a) != 1)
 	{
-		if ((*a)->value == (int_min = get_min(a)))
+		if ((*a)->value == (int_min = get_min(*a)))
 			pb(a, b);
-		else if ((p_intmin = get_position_int(a, int_min)) > len / 2)
+		else if ((p_intmin = get_position_int(*a, int_min)) > len / 2)
 			rra(a);
 		else
 			ra(a);
 	}
-	while ((lenght = get_len(a)) != len)
+	while ((lenght = get_len(*a)) != len)
 		pa(a, b);
 }
 
 void		launch_quick_sort(t_push **a, t_push **b)
 {
 	process_distri_pyramid(a, b);
-	process_selec_sort_opti(a, b, 0);
+	process_selec_sort_opti(a, b);
 	while ((*b) != NULL)
 		pa(a, b);
 }

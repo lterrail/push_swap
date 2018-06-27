@@ -3,69 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lterrail <lterrail@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hben-yah <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/05 13:53:33 by lterrail          #+#    #+#             */
-/*   Updated: 2018/04/10 14:28:16 by lterrail         ###   ########.fr       */
+/*   Created: 2018/04/04 18:20:50 by hben-yah          #+#    #+#             */
+/*   Updated: 2018/04/04 18:20:51 by hben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_intlen(int n)
-{
-	int		i;
-	long	nombre;
-
-	nombre = n;
-	i = 0;
-	if (!nombre)
-		return (1);
-	if (nombre < 0)
-	{
-		nombre = -nombre;
-		i++;
-	}
-	while (nombre > 0)
-	{
-		nombre = nombre / 10;
-		i++;
-	}
-	return (i);
-}
-
-static int		ft_negativ(int n)
-{
-	if (n < 0)
-		return (1);
-	return (0);
-}
-
 char			*ft_itoa(int n)
 {
-	char		*str;
-	size_t		nombre;
-	size_t		length;
-	size_t		i;
+	char			*s;
+	size_t			len;
+	unsigned int	nbr;
 
-	nombre = n;
-	i = 0;
-	length = ft_intlen(nombre);
-	if (!(str = malloc(sizeof(char) * length + 1)))
-		return (0);
+	len = ft_nbrlen(n, 10);
+	nbr = (unsigned int)n;
 	if (n < 0)
 	{
-		str[i++] = '-';
-		nombre = -nombre;
+		nbr *= -1;
+		++len;
 	}
-	str[length] = '\0';
-	while (i < length)
-	{
-		str[length - 1] = (nombre % 10) + '0';
-		nombre = nombre / 10;
-		length--;
-	}
-	if (ft_negativ(nombre))
-		str[0] = '-';
-	return (str);
+	if (!(s = ft_strnew(len)))
+		return (NULL);
+	s[--len] = (char)((nbr % 10) + '0');
+	while (nbr /= 10)
+		s[--len] = (char)((nbr % 10) + '0');
+	if (n < 0)
+		*s = '-';
+	return (s);
 }

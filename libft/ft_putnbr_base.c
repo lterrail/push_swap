@@ -3,66 +3,44 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr_base.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lterrail <lterrail@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hben-yah <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/11 19:20:18 by lterrail          #+#    #+#             */
-/*   Updated: 2018/04/12 11:51:08 by lterrail         ###   ########.fr       */
+/*   Created: 2018/04/09 16:14:54 by hben-yah          #+#    #+#             */
+/*   Updated: 2018/04/09 16:14:55 by hben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_check_base(char *base)
+static int	ft_check_error(char *base)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	while (base[i])
-		i++;
-	if (i == 0 || i == 1)
+	if (ft_strlen(base) < 2 || !ft_hasnodupl(base))
 		return (0);
-	i = 0;
-	while (base[i])
+	while (*base)
 	{
-		j = i + 1;
-		while (base[j])
-		{
-			if (base[i] == base[j])
-				return (0);
-			j++;
-		}
-		if (base[i] == '-' || base[i] == '+')
+		if (*base == '+' || *base == '-' || *base < ' ' || *base > '~')
 			return (0);
-		i++;
+		++base;
 	}
 	return (1);
 }
 
-void			ft_putnbr_base(int nbr, char *base)
+void		ft_putnbr_base(int nbr, char *base)
 {
-	int		i;
-	long	b;
+	unsigned int	n;
+	unsigned int	base_len;
 
-	b = nbr;
-	i = 0;
-	if (ft_check_base(base) == 1)
+	if (ft_check_error(base))
 	{
-		while (base[i])
-			i++;
-		if (b < 0)
+		n = nbr;
+		if (nbr < 0)
 		{
+			n *= -1;
 			ft_putchar('-');
-			b *= -1;
 		}
-		if (b < i)
-		{
-			ft_putchar(base[b]);
-		}
-		else if (b >= i)
-		{
-			ft_putnbr_base(b / i, base);
-			ft_putnbr_base(b % i, base);
-		}
+		base_len = ft_strlen(base);
+		if (n / base_len)
+			ft_putnbr_base(n / base_len, base);
+		ft_putchar(base[n % base_len]);
 	}
 }

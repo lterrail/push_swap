@@ -6,13 +6,13 @@
 /*   By: jsobel <jsobel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 18:14:53 by jsobel            #+#    #+#             */
-/*   Updated: 2018/06/12 18:04:34 by lucien           ###   ########.fr       */
+/*   Updated: 2018/06/25 19:30:08 by jsobel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int			ft_is_sort_increasing(t_push *p)
+int	ft_is_sort_increasing(t_push *p)
 {
 	while (p && p->next)
 	{
@@ -23,7 +23,7 @@ int			ft_is_sort_increasing(t_push *p)
 	return (1);
 }
 
-int			ft_is_sort_decreasing(t_push *p)
+int	ft_is_sort_decreasing(t_push *p)
 {
 	while (p && p->next)
 	{
@@ -34,17 +34,26 @@ int			ft_is_sort_decreasing(t_push *p)
 	return (1);
 }
 
-int			ft_sort(t_push **a, t_push **b, int sort)
+int	ft_sort(t_push **a, t_push **b)
 {
-	if (sort == 0)
+	if (ft_is_sort_increasing(*a) && ft_is_sort_decreasing(*b)
+	&& (!*a || !*b || (*a)->value > (*b)->value))
+		return (1);
+	else
+		return (0);
+}
+
+int	check(t_push **a, t_push **b)
+{
+	if (ft_is_sort_increasing(*a) && ft_is_sort_decreasing(*b)
+	&& (!*a || !*b || (*a)->value > (*b)->value))
 	{
-		if (ft_is_sort_decreasing(*b) == 0)
-			return (0);
+		while (*b)
+		{
+			pa(a, b);
+		}
+		return (1);
 	}
-	else if (sort == 1)
-	{
-		if (ft_is_sort_increasing(*a) == 0)
-			return (0);
-	}
-	return (1);
+	else
+		return (0);
 }

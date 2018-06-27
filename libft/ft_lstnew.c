@@ -3,39 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lterrail <lterrail@student.42.fr>          +#+  +:+       +#+        */
+/*   By: hben-yah <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/04/10 14:44:49 by lterrail          #+#    #+#             */
-/*   Updated: 2018/04/10 18:34:46 by lterrail         ###   ########.fr       */
+/*   Created: 2018/04/04 18:10:58 by hben-yah          #+#    #+#             */
+/*   Updated: 2018/04/04 18:10:59 by hben-yah         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstnew(void const *content, size_t content_size)
+static void	*ft_lstdup(void const *content, size_t content_size)
 {
-	t_list	*new;
+	unsigned char	*r_cont;
+	unsigned char	*r_res;
+	void			*res;
 
-	if (!(new = malloc(sizeof(t_list))))
+	if (!(res = ft_memalloc(content_size)))
 		return (NULL);
-	if (!new)
+	r_cont = (unsigned char *)content;
+	r_res = (unsigned char *)res;
+	while (*r_cont)
+		*(r_res++) = *(r_cont++);
+	return (res);
+}
+
+t_list		*ft_lstnew(void const *content, size_t content_size)
+{
+	t_list *list;
+
+	if (!(list = (t_list *)ft_memalloc(sizeof(t_list))))
 		return (NULL);
+	if (content)
+	{
+		if (!(list->content = ft_lstdup(content, content_size)))
+			return (NULL);
+		list->content_size = content_size;
+	}
 	else
 	{
-		if (content != NULL)
-		{
-			new->content = ft_memalloc(sizeof(void) * content_size + 1);
-			if (new->content == NULL)
-				return (NULL);
-			ft_memcpy(new->content, content, content_size);
-			new->content_size = content_size;
-		}
-		else
-		{
-			new->content = NULL;
-			new->content_size = 0;
-		}
-		new->next = NULL;
+		list->content = NULL;
+		list->content_size = 0;
 	}
-	return (new);
+	list->next = NULL;
+	return (list);
 }
