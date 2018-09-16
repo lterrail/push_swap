@@ -6,7 +6,7 @@
 /*   By: julienso <julienso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/12 17:52:13 by julienso          #+#    #+#             */
-/*   Updated: 2018/06/25 20:05:03 by jsobel           ###   ########.fr       */
+/*   Updated: 2018/09/16 14:49:52 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int			global_count(t_push *a)
 {
-	int	nb;
+	int		nb;
 
 	nb = 0;
 	if (a && a->count == -1)
@@ -27,7 +27,7 @@ int			global_count(t_push *a)
 	return (nb);
 }
 
-void	ft_free_list(t_push **begin_list)
+void		ft_free_list(t_push **begin_list)
 {
 	t_push *delete;
 	t_push *tmp;
@@ -43,7 +43,7 @@ void	ft_free_list(t_push **begin_list)
 	*begin_list = NULL;
 }
 
-int		ft_valid_list(t_push *p)
+int			ft_valid_list(t_push *p)
 {
 	t_push *c;
 
@@ -60,7 +60,7 @@ int		ft_valid_list(t_push *p)
 		return (0);
 }
 
-int		ft_bigger_than_integer(char *p, int value, int i)
+int			ft_bigger_than_integer(char *p, int value, int i)
 {
 	if (((value > 0 || i > 11) && p[0] == '-') ||
 	(value >= 0 && (value % 10) != (p[i] - 48)) ||
@@ -70,7 +70,7 @@ int		ft_bigger_than_integer(char *p, int value, int i)
 	return (0);
 }
 
-t_push	*ft_creat_list(int argc, char **argv, int display)
+t_push		*ft_creat_list(int argc, char **argv, int display)
 {
 	t_push	*p;
 	int		i;

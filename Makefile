@@ -6,39 +6,39 @@
 #    By: lucien <lucien@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/06 11:25:50 by lucien            #+#    #+#              #
-#    Updated: 2018/06/25 19:43:48 by jsobel           ###   ########.fr        #
+#    Updated: 2018/09/16 14:50:28 by lterrail         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME1	= push_swap
 NAME2	= checker
 
-SRC1	=	push_swap.c		\
-			list.c			\
-			operator.c 		\
-			swap.c			\
-			push.c			\
-			rotate.c		\
-			reverse.c		\
-			process.c		\
-			shaker.c		\
-			simple_case.c 	\
-			get_data.c		\
-			sort.c			\
-			quick_sort.c	\
+SRC1	=	main_push_swap.c	\
+			list.c				\
+			operator.c 			\
+			swap.c				\
+			push.c				\
+			rotate.c			\
+			reverse.c			\
+			process.c			\
+			shaker.c			\
+			simple_case.c 		\
+			get_data.c			\
+			sort.c				\
+			quick_sort.c		\
 			exception.c
 
-SRC2	=	checker.c 		\
-			list.c 			\
-			exception.c 	\
-			get_data.c 		\
-			get_next_line.c	\
-			operator.c 		\
-			sort.c 			\
-			push.c 			\
-			reverse.c 		\
-			rotate.c 		\
-			shaker.c 		\
+SRC2	=	main_checker.c		\
+			list.c 				\
+			exception.c 		\
+			get_data.c 			\
+			get_next_line.c		\
+			operator.c 			\
+			sort.c 				\
+			push.c 				\
+			reverse.c 			\
+			rotate.c 			\
+			shaker.c 			\
 			swap.c
 
 OBJ1		= $(addprefix ./obj/,$(SRC1:.c=.o))

@@ -6,7 +6,7 @@
 /*   By: jsobel <jsobel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 19:50:50 by jsobel            #+#    #+#             */
-/*   Updated: 2018/06/25 19:27:12 by jsobel           ###   ########.fr       */
+/*   Updated: 2018/09/16 14:45:41 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 void	ft_exception(char *s)
 {
-	ft_putendl(s);
+	write(2, s, ft_strlen(s));
+	write(2, "\n", 1);
 	exit(EXIT_FAILURE);
 }

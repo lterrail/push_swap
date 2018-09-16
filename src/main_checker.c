@@ -6,7 +6,7 @@
 /*   By: jsobel <jsobel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 18:29:23 by jsobel            #+#    #+#             */
-/*   Updated: 2018/06/26 19:22:05 by jsobel           ###   ########.fr       */
+/*   Updated: 2018/09/16 14:49:44 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static t_push	*split_arg(char *tab)
 {
-	char 	**copie;
+	char	**copie;
 	t_push	*a;
 	int		i;
 
