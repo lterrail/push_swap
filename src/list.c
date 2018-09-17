@@ -6,13 +6,13 @@
 /*   By: julienso <julienso@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/12 17:52:13 by julienso          #+#    #+#             */
-/*   Updated: 2018/06/25 20:05:03 by jsobel           ###   ########.fr       */
+/*   Updated: 2018/09/17 15:27:16 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int			global_count(t_push *a)
+int		global_count(t_push *a)
 {
 	int	nb;
 
