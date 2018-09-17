@@ -6,14 +6,14 @@
 #    By: lucien <lucien@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/06 11:25:50 by lucien            #+#    #+#              #
-#    Updated: 2018/09/16 14:50:28 by lterrail         ###   ########.fr        #
+#    Updated: 2018/09/17 18:34:54 by lterrail         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME1	= push_swap
 NAME2	= checker
 
-SRC1	=	main_push_swap.c	\
+SRC1	=	push_swap.c	\
 			list.c				\
 			operator.c 			\
 			swap.c				\
@@ -28,7 +28,7 @@ SRC1	=	main_push_swap.c	\
 			quick_sort.c		\
 			exception.c
 
-SRC2	=	main_checker.c		\
+SRC2	=	checker.c		\
 			list.c 				\
 			exception.c 		\
 			get_data.c 			\
