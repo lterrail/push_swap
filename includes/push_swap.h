@@ -6,7 +6,7 @@
 /*   By: jsobel <jsobel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 18:32:07 by jsobel            #+#    #+#             */
-/*   Updated: 2018/09/19 15:33:39 by lterrail         ###   ########.fr       */
+/*   Updated: 2018/09/19 17:43:17 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,6 @@ typedef struct		s_push
 	int				display;
 	struct s_push	*next;
 }					t_push;
-
-typedef struct		s_data
-{
-	char			*line;
-	char			*tmp;
-	int				index;
-	struct s_data	*next;
-}					t_data;
 
 /*
 ** push_swap -- list
@@ -141,7 +133,7 @@ int					divide_to_conquer(t_push **a, t_push **b, int med);
 void				ft_shaker(t_push **a, t_push **b);
 
 /*
-** push_swap -- process
+** push_swap -- quick_sort
 */
 
 void				ft_process(t_push **a, t_push **b);

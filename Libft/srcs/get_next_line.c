@@ -6,59 +6,124 @@
 /*   By: lterrail <lterrail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/05/01 17:17:26 by lterrail          #+#    #+#             */
-/*   Updated: 2018/09/19 16:28:26 by lterrail         ###   ########.fr       */
+/*   Updated: 2018/09/19 18:20:41 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		last_line(char **line, char *str)
+static void		ft_free(int fd, t_data **l)
 {
-	if (!(*line = ft_strdup(str)))
-		return (-1);
-	ft_memset(str, '\0', ft_strlen(str));
-	return (1);
+	t_data	*f;
+
+	f = *l;
+	if ((*l)->index == fd)
+	{
+		*l = (*l)->next;
+		ft_strdel(&(f->tmp));
+		ft_strdel(&(f->line));
+		free(f);
+	}
+	else
+		ft_free(fd, &(*l)->next);
 }
 
-static char		*read_line(int fd, char *str, int *ret)
+static int		ft_read_buf(int flag, char *buf, t_data **p, int len)
 {
-	char	buff[BUFF_SIZE + 1];
-	char	*new;
+	int		i;
+	char	*link;
 
-	ft_bzero(buff, BUFF_SIZE);
-	*ret = read(fd, buff, BUFF_SIZE);
-	buff[*ret] = '\0';
-	if (!(new = ft_strjoin(str, buff)))
-		return (NULL);
-	ft_strdel(&str);
-	return (new);
+	i = -1;
+	while (++i < len)
+	{
+		(*p)->tmp[i] = buf[i];
+		if (!flag && buf[i] == '\n' && (flag = i + 1))
+		{
+			(*p)->tmp[i] = 0;
+			if (!(link = ft_strjoin((*p)->line, (*p)->tmp)))
+				return (-1);
+		}
+	}
+	(*p)->tmp[i] = 0;
+	if (!flag)
+	{
+		if (!(link = ft_strjoin((*p)->line, (*p)->tmp)))
+			return (-1);
+	}
+	else
+		ft_memcpy((*p)->tmp, (*p)->tmp + flag, BUFF_SIZE - flag + 1);
+	ft_strdel(&((*p)->line));
+	(*p)->line = link;
+	return (flag);
+}
+
+static int		ft_reader(const int fd, t_data **p)
+{
+	int		i;
+	int		flag;
+	int		len;
+	char	buf[BUFF_SIZE + 1];
+
+	i = -1;
+	flag = 0;
+	while ((*p)->tmp[++i])
+	{
+		(*p)->line[i] = (*p)->tmp[i];
+		if ((*p)->line[i] == '\n')
+		{
+			(*p)->line[i] = 0;
+			ft_memcpy((*p)->tmp, (*p)->tmp + i + 1, BUFF_SIZE - i);
+			return (1);
+		}
+	}
+	while (!flag && (len = read(fd, buf, BUFF_SIZE)))
+	{
+		if (len == -1 || (flag = ft_read_buf(flag, buf, p, len)) == -1)
+			return (-1);
+	}
+	return (len > 0);
+}
+
+static t_data	*ft_set_p(const int fd, t_data **l)
+{
+	if ((*l) && (*l)->index != fd)
+		return (ft_set_p(fd, &(*l)->next));
+	else
+	{
+		if (!(*l))
+		{
+			if (!((*l) = malloc(sizeof(t_data))))
+				return (NULL);
+			(*l)->index = fd;
+			(*l)->line = NULL;
+			if (!((*l)->tmp = malloc(sizeof(char) * (BUFF_SIZE + 1))))
+				return (NULL);
+			ft_bzero((*l)->tmp, BUFF_SIZE + 1);
+			(*l)->next = NULL;
+		}
+		return ((*l));
+	}
 }
 
 int				get_next_line(const int fd, char **line)
 {
-	int			ret;
-	static char	*str = "";
-	char		*tmp;
+	static t_data	*l;
+	t_data			*p;
+	int				state;
 
-	ret = 1;
-	tmp = NULL;
-	if (!line || fd < 0 || (str[0] == '\0' && (!(str = ft_strnew(BUFF_SIZE)))))
+	if (fd < 0 || !line || !(p = ft_set_p(fd, &l)))
 		return (-1);
-	while (ret > 0)
-	{
-		if ((tmp = ft_strchr(str, '\n')) != NULL)
-		{
-			*tmp = '\0';
-			if (!((*line) = ft_strdup(str)))
-				return (-1);
-			ft_memcpy(str, tmp + 1, ft_strlen(tmp + 1) + 1);
-			return (1);
-		}
-		if (!(str = read_line(fd, str, &ret)))
-			return (-1);
-	}
-	ft_strdel(&tmp);
-	if (ret == 0 && str && ft_strlen(str))
-		return (last_line(&(*line), str));
-	return (ret);
+	if (p->line)
+		free(p->line);
+	if (!(p->line = malloc(sizeof(char) * (BUFF_SIZE + 1))))
+		return (-1);
+	ft_bzero(p->line, BUFF_SIZE + 1);
+	if ((state = ft_reader(fd, &p)) == -1)
+		return (-1);
+	*line = NULL;
+	if ((p->line[0] || state != 0) && !(*line = ft_strdup(p->line)))
+		return (-1);
+	if (!state)
+		ft_free(fd, &l);
+	return (*line != NULL || state != 0);
 }

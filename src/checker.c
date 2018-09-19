@@ -6,7 +6,7 @@
 /*   By: lterrail <lterrail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/19 16:06:45 by lterrail          #+#    #+#             */
-/*   Updated: 2018/09/19 16:06:46 by lterrail         ###   ########.fr       */
+/*   Updated: 2018/09/19 17:50:36 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,11 +43,11 @@ int				main(int argc, char **argv)
 	if (!ft_valid_list(a))
 		ft_error("Error");
 	while ((get_next_line(0, &op) > 0))
+	{
 		ft_check_op(op, &a, &b);
-	if (ft_is_sort_increasing(a) && !b)
-		ft_putendl("OK");
-	else
-		ft_putendl("KO");
+		free(op);
+	}
+	ft_is_sort_increasing(a) && !b ? ft_putendl("OK") : ft_putendl("KO");
 	ft_free_list(&a);
 	ft_free_list(&b);
 	free(op);

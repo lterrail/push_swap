@@ -6,7 +6,7 @@
 #    By: lterrail <lterrail@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/05 16:05:37 by lterrail          #+#    #+#              #
-#    Updated: 2018/09/19 17:15:11 by lterrail         ###   ########.fr        #
+#    Updated: 2018/09/19 18:20:09 by lterrail         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,7 +101,6 @@ SRCS = 		ft_atoi.c			\
 			ft_strlen_char.c	\
 			ft_strcat_char.c	\
 			ft_count_char.c		\
-			ft_strcpy_to_until.c\
 			ft_buble_sort_tab.c	\
 			ft_putnbr_base.c
 

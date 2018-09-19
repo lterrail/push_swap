@@ -6,7 +6,7 @@
 #    By: lucien <lucien@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/06 11:25:50 by lucien            #+#    #+#              #
-#    Updated: 2018/09/19 17:15:35 by lterrail         ###   ########.fr        #
+#    Updated: 2018/09/19 17:43:00 by lterrail         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME1	= push_swap
 NAME2	= checker
 
 SRC1	=	push_swap.c				\
-			process.c				\
+			quick_sort_init.c		\
 			shaker.c				\
 			simple_case.c 			\
 			get_data.c				\

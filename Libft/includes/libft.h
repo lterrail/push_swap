@@ -6,7 +6,7 @@
 /*   By: lterrail <lterrail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 16:47:48 by lterrail          #+#    #+#             */
-/*   Updated: 2018/09/19 17:12:46 by lterrail         ###   ########.fr       */
+/*   Updated: 2018/09/19 18:20:22 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,11 +79,9 @@ void				ft_putnbr_base(int nbr, char *base);
 size_t				ft_strlen_char(char *str, char c);
 char				*ft_strdup_char(const char *str, char c);
 char				*ft_strcpy_char(char *dest, const char *src, char c);
-char				*ft_strcpy_to_until(char *dest, char *src, char c, char d);
 char				*ft_strcat_char(char *dest, char *src, char c);
 int					ft_count_char(char *str, char c);
 char				**ft_buble_sort_tab(char **tab, int nb);
-
 
 typedef struct		s_list
 {

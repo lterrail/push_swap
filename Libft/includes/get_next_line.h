@@ -6,7 +6,7 @@
 /*   By: lterrail <lterrail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/20 08:48:18 by lterrail          #+#    #+#             */
-/*   Updated: 2018/09/19 16:28:12 by lterrail         ###   ########.fr       */
+/*   Updated: 2018/09/19 18:18:56 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,14 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
-int				get_next_line(const int fd, char **line);
+typedef struct		s_data
+{
+	char			*line;
+	char			*tmp;
+	int				index;
+	struct s_data	*next;
+}					t_data;
+
+int					get_next_line(const int fd, char **line);
 
 #endif
