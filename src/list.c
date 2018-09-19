@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   list.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julienso <julienso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lterrail <lterrail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/12 17:52:13 by julienso          #+#    #+#             */
-/*   Updated: 2018/09/17 16:29:46 by lterrail         ###   ########.fr       */
+/*   Created: 2018/09/19 16:07:03 by lterrail          #+#    #+#             */
+/*   Updated: 2018/09/19 16:07:05 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int		global_count(t_push *a)
+int			global_count(t_push *a)
 {
 	int		nb;
 
@@ -82,14 +82,14 @@ t_push		*ft_creat_list(int argc, char **argv, int display)
 		while (argv[0][i])
 		{
 			if (i && argv[0][0] != '-' && (argv[0][i] < 48 || argv[0][i] > 57))
-				ft_exception("Error");
+				ft_error("Error");
 			i++;
 		}
 		if (!(p = malloc(sizeof(t_push))))
-			ft_exception("malloc failed");
+			ft_error("malloc failed");
 		p->value = ft_atoi(argv[0]);
 		if (ft_bigger_than_integer(argv[0], p->value, i - 1))
-			ft_exception("Error");
+			ft_error("Error");
 		p->count = 0;
 		p->display = display;
 		p->next = ft_creat_list(argc - 1, &argv[1], display);

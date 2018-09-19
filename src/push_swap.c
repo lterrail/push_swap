@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: julienso <julienso@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lterrail <lterrail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/06/10 18:18:00 by julienso          #+#    #+#             */
-/*   Updated: 2018/09/17 17:22:23 by lterrail         ###   ########.fr       */
+/*   Created: 2018/09/19 16:07:09 by lterrail          #+#    #+#             */
+/*   Updated: 2018/09/19 16:07:11 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ int result[5], int argc, char **argv)
 		i++;
 	}
 	if (!(a = ft_creat_list(argc, argv, 1)))
-		ft_exception("failed to creat list");
+		ft_error("failed to creat list");
 	if (!ft_valid_list(a))
-		ft_exception("Error");
+		ft_error("Error");
 	tab[index](&a, &b);
 	ft_free_list(&a);
 }
@@ -53,9 +53,9 @@ int result[5], int argc, char **argv)
 	while (i <= 4)
 	{
 		if (!(a = ft_creat_list(argc, argv, 0)))
-			ft_exception("failed to creat list");
+			ft_error("failed to creat list");
 		if (!ft_valid_list(a))
-			ft_exception("Error");
+			ft_error("Error");
 		tab[i](&a, &b);
 		if (ft_is_sort_increasing(a) && !b)
 			result[i] = global_count(a);

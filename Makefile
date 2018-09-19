@@ -6,40 +6,39 @@
 #    By: lucien <lucien@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/06 11:25:50 by lucien            #+#    #+#              #
-#    Updated: 2018/09/17 18:34:54 by lterrail         ###   ########.fr        #
+#    Updated: 2018/09/19 17:15:35 by lterrail         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME1	= push_swap
 NAME2	= checker
 
-SRC1	=	push_swap.c	\
-			list.c				\
-			operator.c 			\
-			swap.c				\
-			push.c				\
-			rotate.c			\
-			reverse.c			\
-			process.c			\
-			shaker.c			\
-			simple_case.c 		\
-			get_data.c			\
-			sort.c				\
-			quick_sort.c		\
-			exception.c
+SRC1	=	push_swap.c				\
+			process.c				\
+			shaker.c				\
+			simple_case.c 			\
+			get_data.c				\
+			sort.c					\
+			quick_sort.c			\
+			list.c					\
+			error.c					\
+			ope/operator.c 			\
+			ope/swap.c				\
+			ope/push.c				\
+			ope/rotate.c			\
+			ope/reverse.c
 
-SRC2	=	checker.c		\
-			list.c 				\
-			exception.c 		\
-			get_data.c 			\
-			get_next_line.c		\
-			operator.c 			\
-			sort.c 				\
-			push.c 				\
-			reverse.c 			\
-			rotate.c 			\
-			shaker.c 			\
-			swap.c
+SRC2	=	checker.c				\
+			list.c 					\
+			error.c		 			\
+			get_data.c 				\
+			sort.c 					\
+			shaker.c 				\
+			ope/swap.c				\
+			ope/operator.c 			\
+			ope/push.c 				\
+			ope/reverse.c 			\
+			ope/rotate.c
 
 OBJ1		= $(addprefix ./obj/,$(SRC1:.c=.o))
 OBJ2		= $(addprefix ./obj/,$(SRC2:.c=.o))
@@ -55,6 +54,7 @@ all: obj libft $(NAME1) $(NAME2)
 
 obj:
 	mkdir -p ./obj/
+	mkdir -p ./obj/ope/
 
 ./obj/%.o:./src/%.c
 	$(CC) $(CFLAGS) $(LIBINCL) -Iincludes -o $@ -c $<

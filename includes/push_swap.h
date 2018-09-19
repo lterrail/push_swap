@@ -6,7 +6,7 @@
 /*   By: jsobel <jsobel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 18:32:07 by jsobel            #+#    #+#             */
-/*   Updated: 2018/09/16 13:19:23 by lterrail         ###   ########.fr       */
+/*   Updated: 2018/09/19 15:33:39 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,10 +53,10 @@ int					ft_bigger_than_integer(char *p, int value, int i);
 void				ft_free_list(t_push **begin_list);
 
 /*
-** push_swap -- exception
+** push_swap -- error
 */
 
-void				ft_exception(char *s);
+void				ft_error(char *s);
 
 /*
 ** push_swap -- simple_case
