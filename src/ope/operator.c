@@ -6,7 +6,7 @@
 /*   By: jsobel <jsobel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 18:21:09 by jsobel            #+#    #+#             */
-/*   Updated: 2018/09/19 17:36:16 by lterrail         ###   ########.fr       */
+/*   Updated: 2018/09/22 16:41:26 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,5 +103,8 @@ void	ft_check_op(char *op, t_push **a, t_push **b)
 	else if (!ft_strcmp(op, "rrr") && ft_reverse_rotate(a))
 		ft_reverse_rotate(b);
 	else
+	{
+		free(op);
 		ft_error("Error");
+	}
 }

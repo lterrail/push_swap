@@ -6,11 +6,24 @@
 /*   By: lterrail <lterrail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/19 16:06:45 by lterrail          #+#    #+#             */
-/*   Updated: 2018/09/19 17:50:36 by lterrail         ###   ########.fr       */
+/*   Updated: 2018/09/22 17:23:35 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void		free_tab(char **tab)
+{
+	int i;
+
+	i = 0;
+	while (tab[i])
+	{
+		free(tab[i]);
+		i++;
+	}
+	free(tab);
+}
 
 static t_push	*split_arg(char *tab)
 {
@@ -24,6 +37,7 @@ static t_push	*split_arg(char *tab)
 	while (copie[i])
 		i++;
 	a = ft_creat_list(i, copie, 0);
+	free_tab(copie);
 	return (a);
 }
 

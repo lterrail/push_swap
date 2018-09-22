@@ -6,7 +6,7 @@
 #    By: lucien <lucien@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/06 11:25:50 by lucien            #+#    #+#              #
-#    Updated: 2018/09/19 19:05:30 by lterrail         ###   ########.fr        #
+#    Updated: 2018/09/22 16:39:35 by lterrail         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,8 +50,6 @@ LIBFTA	= ./libft/libft.a
 LIBINCL = -I./libft/includes
 LIBLINK	= -L./libft -lft
 
-all: obj libft $(NAME1) $(NAME2)
-
 obj:
 	@mkdir -p ./obj/
 	@mkdir -p ./obj/ope/
@@ -69,6 +67,8 @@ $(NAME2): $(OBJ2)
 
 $(NAME1): $(OBJ1)
 	@$(CC) -o $(NAME1) $(OBJ1) $(LIBLINK)
+
+all: obj libft $(NAME1) $(NAME2)
 
 clean:
 	@rm -rf ./obj/
