@@ -6,7 +6,7 @@
 /*   By: lterrail <lterrail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/19 16:07:03 by lterrail          #+#    #+#             */
-/*   Updated: 2018/09/19 16:07:05 by lterrail         ###   ########.fr       */
+/*   Updated: 2018/09/22 19:25:29 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,10 @@ void		ft_free_list(t_push **begin_list)
 	while (tmp)
 	{
 		delete = tmp;
+		// printf("link [%d]\n", tmp->value);
 		tmp = tmp->next;
 		free(delete);
 	}
-	free(tmp);
-	*begin_list = NULL;
 }
 
 int			ft_valid_list(t_push *p)
@@ -82,14 +81,14 @@ t_push		*ft_creat_list(int argc, char **argv, int display)
 		while (argv[0][i])
 		{
 			if (i && argv[0][0] != '-' && (argv[0][i] < 48 || argv[0][i] > 57))
-				ft_error("Error");
+				ft_error(p, "Error");
 			i++;
 		}
-		if (!(p = malloc(sizeof(t_push))))
-			ft_error("malloc failed");
+		if (!(p = (t_push *)malloc(sizeof(t_push))))
+			ft_error(p, "malloc failed");
 		p->value = ft_atoi(argv[0]);
 		if (ft_bigger_than_integer(argv[0], p->value, i - 1))
-			ft_error("Error");
+			ft_error(p, "Error");
 		p->count = 0;
 		p->display = display;
 		p->next = ft_creat_list(argc - 1, &argv[1], display);

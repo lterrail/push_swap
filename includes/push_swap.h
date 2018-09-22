@@ -6,7 +6,7 @@
 /*   By: jsobel <jsobel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 18:32:07 by jsobel            #+#    #+#             */
-/*   Updated: 2018/09/22 16:17:37 by lterrail         ###   ########.fr       */
+/*   Updated: 2018/09/22 18:38:42 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void				ft_free_list(t_push **begin_list);
 ** push_swap -- error
 */
 
-void				ft_error(char *s);
+int					ft_error(t_push *a, char *s);
 
 /*
 ** push_swap -- simple_case
@@ -67,10 +67,10 @@ int					get_next_line(const int fd, char **line);
 ** push_swap -- operator
 */
 
-void				ft_check_op(char *op, t_push **a, t_push **b);
+int					ft_check_op(char *op, t_push **a, t_push **b);
 int					ft_swap(t_push **p);
 int					ft_rotate(t_push **p);
-void				ft_push(t_push **p1, t_push **p2);
+int					ft_push(t_push **p1, t_push **p2);
 int					ft_reverse_rotate(t_push **p);
 
 /*

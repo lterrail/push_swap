@@ -6,7 +6,7 @@
 /*   By: lterrail <lterrail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/19 16:07:09 by lterrail          #+#    #+#             */
-/*   Updated: 2018/09/19 16:07:11 by lterrail         ###   ########.fr       */
+/*   Updated: 2018/09/22 18:52:03 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ int result[5], int argc, char **argv)
 		i++;
 	}
 	if (!(a = ft_creat_list(argc, argv, 1)))
-		ft_error("failed to creat list");
+		ft_error(a, "failed to creat list");
 	if (!ft_valid_list(a))
-		ft_error("Error");
+		ft_error(a, "Error");
 	tab[index](&a, &b);
 	ft_free_list(&a);
 }
@@ -53,9 +53,9 @@ int result[5], int argc, char **argv)
 	while (i <= 4)
 	{
 		if (!(a = ft_creat_list(argc, argv, 0)))
-			ft_error("failed to creat list");
+			ft_error(a, "failed to creat list");
 		if (!ft_valid_list(a))
-			ft_error("Error");
+			ft_error(a, "Error");
 		tab[i](&a, &b);
 		if (ft_is_sort_increasing(a) && !b)
 			result[i] = global_count(a);

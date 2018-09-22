@@ -6,7 +6,7 @@
 #    By: lucien <lucien@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/06 11:25:50 by lucien            #+#    #+#              #
-#    Updated: 2018/09/22 16:39:35 by lterrail         ###   ########.fr        #
+#    Updated: 2018/09/22 18:37:18 by lterrail         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,8 @@ SRC2	=	checker.c				\
 OBJ1		= $(addprefix ./obj/,$(SRC1:.c=.o))
 OBJ2		= $(addprefix ./obj/,$(SRC2:.c=.o))
 
+all: obj libft $(NAME1) $(NAME2)
+	
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
 
@@ -68,7 +70,6 @@ $(NAME2): $(OBJ2)
 $(NAME1): $(OBJ1)
 	@$(CC) -o $(NAME1) $(OBJ1) $(LIBLINK)
 
-all: obj libft $(NAME1) $(NAME2)
 
 clean:
 	@rm -rf ./obj/
