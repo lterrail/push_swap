@@ -6,7 +6,7 @@
 /*   By: jsobel <jsobel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 18:32:07 by jsobel            #+#    #+#             */
-/*   Updated: 2018/09/22 18:38:42 by lterrail         ###   ########.fr       */
+/*   Updated: 2018/09/23 08:35:32 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@
 # define BUFF_SIZE  32
 # define SMALL_SIZE 4
 # define MEDIUM_SIZE 9
+# define E_SUCCES 1
+# define E_ERROR -1
 
 typedef struct		s_push
 {
@@ -48,7 +50,10 @@ void				ft_free_list(t_push **begin_list);
 ** push_swap -- error
 */
 
-int					ft_error(t_push *a, char *s);
+int					ft_error_checker(t_push *a, char *s);
+int					ft_error_push_swap(t_push *a, t_push *b,
+					char *s, char **copie);
+void				free_tab(char **tab);
 
 /*
 ** push_swap -- simple_case

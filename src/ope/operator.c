@@ -6,7 +6,7 @@
 /*   By: jsobel <jsobel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/07 18:21:09 by jsobel            #+#    #+#             */
-/*   Updated: 2018/09/22 19:28:29 by lterrail         ###   ########.fr       */
+/*   Updated: 2018/09/23 09:43:23 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int		ft_reverse_rotate(t_push **p)
 			tmp->next = NULL;
 		}
 	}
-	return (1);
+	return (E_SUCCES);
 }
 
 int		ft_rotate(t_push **p)
@@ -48,7 +48,7 @@ int		ft_rotate(t_push **p)
 		*p = (*p)->next;
 		tmp->next->next = NULL;
 	}
-	return (1);
+	return (E_SUCCES);
 }
 
 int		ft_push(t_push **p1, t_push **p2)
@@ -62,7 +62,7 @@ int		ft_push(t_push **p1, t_push **p2)
 		*p1 = *p2;
 		*p2 = tmp;
 	}
-	return (1);
+	return (E_SUCCES);
 }
 
 int		ft_swap(t_push **p)
@@ -76,7 +76,7 @@ int		ft_swap(t_push **p)
 		tmp->next = (*p);
 		(*p) = tmp;
 	}
-	return (1);
+	return (E_SUCCES);
 }
 
 int		ft_check_op(char *op, t_push **a, t_push **b)
@@ -104,5 +104,5 @@ int		ft_check_op(char *op, t_push **a, t_push **b)
 	else if (!ft_strcmp(op, "rrr") && ft_reverse_rotate(a))
 		return (ft_reverse_rotate(b));
 	else
-		return (-1);
+		return (E_ERROR);
 }

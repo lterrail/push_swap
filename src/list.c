@@ -6,7 +6,7 @@
 /*   By: lterrail <lterrail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/19 16:07:03 by lterrail          #+#    #+#             */
-/*   Updated: 2018/09/22 19:25:29 by lterrail         ###   ########.fr       */
+/*   Updated: 2018/09/23 13:24:10 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,28 +18,13 @@ int			global_count(t_push *a)
 
 	nb = 0;
 	if (a && a->count == -1)
-		return (-1);
+		return (E_ERROR);
 	while (a)
 	{
 		nb += a->count;
 		a = a->next;
 	}
 	return (nb);
-}
-
-void		ft_free_list(t_push **begin_list)
-{
-	t_push *delete;
-	t_push *tmp;
-
-	tmp = *begin_list;
-	while (tmp)
-	{
-		delete = tmp;
-		// printf("link [%d]\n", tmp->value);
-		tmp = tmp->next;
-		free(delete);
-	}
 }
 
 int			ft_valid_list(t_push *p)
@@ -61,10 +46,10 @@ int			ft_valid_list(t_push *p)
 
 int			ft_bigger_than_integer(char *p, int value, int i)
 {
-	if (((value > 0 || i > 11) && p[0] == '-') ||
-	(value >= 0 && (value % 10) != (p[i] - 48)) ||
-	(value < 0 && (value % 10) != -(p[i] - 48)) ||
-	((value < 0 || i > 11) && p[0] != '-'))
+	if (((value > 0 || i > 11) && p[0] == '-')
+	|| (value >= 0 && (value % 10) != (p[i] - 48))
+	|| (value < 0 && (value % 10) != -(p[i] - 48))
+	|| ((value < 0 || i > 11) && p[0] != '-'))
 		return (1);
 	return (0);
 }
@@ -80,18 +65,26 @@ t_push		*ft_creat_list(int argc, char **argv, int display)
 	{
 		while (argv[0][i])
 		{
-			if (i && argv[0][0] != '-' && (argv[0][i] < 48 || argv[0][i] > 57))
-				ft_error(p, "Error");
+			if (argv[0][0] != '-' && (argv[0][i] < '0' || argv[0][i] > '9'))
+			{
+				// ft_printf("{red}erreur {eoc}%s\n", argv[0]);
+				return (NULL);
+			}
+			// ft_printf("{blue}success {eoc}%s\n", argv[0]);
 			i++;
 		}
 		if (!(p = (t_push *)malloc(sizeof(t_push))))
-			ft_error(p, "malloc failed");
+			return (NULL);
 		p->value = ft_atoi(argv[0]);
-		if (ft_bigger_than_integer(argv[0], p->value, i - 1))
-			ft_error(p, "Error");
 		p->count = 0;
 		p->display = display;
-		p->next = ft_creat_list(argc - 1, &argv[1], display);
+		p->next = NULL;
+		if (ft_bigger_than_integer(argv[0], p->value, i - 1)
+			|| (argc > 1 && !(p->next = ft_creat_list(argc - 1, &argv[1], display))))
+		{
+			free(p);
+			return (NULL);
+		}
 	}
 	return (p);
 }

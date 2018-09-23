@@ -6,7 +6,7 @@
 #    By: lucien <lucien@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/06/06 11:25:50 by lucien            #+#    #+#              #
-#    Updated: 2018/09/22 18:37:18 by lterrail         ###   ########.fr        #
+#    Updated: 2018/09/23 09:45:03 by lterrail         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ OBJ1		= $(addprefix ./obj/,$(SRC1:.c=.o))
 OBJ2		= $(addprefix ./obj/,$(SRC2:.c=.o))
 
 all: obj libft $(NAME1) $(NAME2)
-	
+
 CC		= gcc
 CFLAGS	= -Wall -Wextra -Werror
 
@@ -57,27 +57,26 @@ obj:
 	@mkdir -p ./obj/ope/
 
 ./obj/%.o:./src/%.c
-	@$(CC) $(CFLAGS) $(LIBINCL) -Iincludes -o $@ -c $<
+	$(CC) $(CFLAGS) $(LIBINCL) -Iincludes -o $@ -c $<
 
 libft: $(LIBFTA)
 
 $(LIBFTA):
-	@make -C ./libft
+	make -C ./libft
 
 $(NAME2): $(OBJ2)
-	@$(CC) -o $(NAME2) $(OBJ2) $(LIBLINK)
+	$(CC) -o $(NAME2) $(OBJ2) $(LIBLINK)
 
 $(NAME1): $(OBJ1)
-	@$(CC) -o $(NAME1) $(OBJ1) $(LIBLINK)
-
+	$(CC) -o $(NAME1) $(OBJ1) $(LIBLINK)
 
 clean:
-	@rm -rf ./obj/
-	@make -C ./libft clean
+	rm -rf ./obj/
+	make -C ./libft clean
 
 fclean: clean
-	@rm -rf $(NAME1)
-	@rm -rf $(NAME2)
-	@make -C ./libft fclean
+	rm -rf $(NAME1)
+	rm -rf $(NAME2)
+	make -C ./libft fclean
 
 re: fclean all

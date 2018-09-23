@@ -6,7 +6,7 @@
 /*   By: lterrail <lterrail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/19 16:07:09 by lterrail          #+#    #+#             */
-/*   Updated: 2018/09/22 18:52:03 by lterrail         ###   ########.fr       */
+/*   Updated: 2018/09/23 11:03:02 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int result[5], int argc, char **argv)
 	int		i;
 
 	b = NULL;
-	min = 2147483647;
+	min = INT_MAX;
 	i = 0;
 	while (i <= 4)
 	{
@@ -34,9 +34,9 @@ int result[5], int argc, char **argv)
 		i++;
 	}
 	if (!(a = ft_creat_list(argc, argv, 1)))
-		ft_error(a, "failed to creat list");
+		ft_error_push_swap(a, b, "Error", argv);
 	if (!ft_valid_list(a))
-		ft_error(a, "Error");
+		ft_error_push_swap(a, b, "Error", argv);
 	tab[index](&a, &b);
 	ft_free_list(&a);
 }
@@ -53,9 +53,9 @@ int result[5], int argc, char **argv)
 	while (i <= 4)
 	{
 		if (!(a = ft_creat_list(argc, argv, 0)))
-			ft_error(a, "failed to creat list");
+			ft_error_push_swap(a, b, "Error", argv);
 		if (!ft_valid_list(a))
-			ft_error(a, "Error");
+			ft_error_push_swap(a, b, "Error", argv);
 		tab[i](&a, &b);
 		if (ft_is_sort_increasing(a) && !b)
 			result[i] = global_count(a);
@@ -64,19 +64,6 @@ int result[5], int argc, char **argv)
 		ft_free_list(&a);
 		i++;
 	}
-}
-
-static void	free_tab(char **tab)
-{
-	int i;
-
-	i = 0;
-	while (tab[i])
-	{
-		free(tab[i]);
-		i++;
-	}
-	free(tab);
 }
 
 static void	ft_init_tab(void (*tab[5])(t_push **, t_push **))
@@ -99,7 +86,7 @@ int			main(int argc, char **argv)
 	ft_init_tab(tab);
 	i = 0;
 	if (argc < 2)
-		return (0);
+		return (E_ERROR);
 	if (argc == 2 && ft_strchr(argv[1], ' '))
 	{
 		copie = ft_strsplit(argv[1], ' ');
@@ -114,5 +101,5 @@ int			main(int argc, char **argv)
 		fill_result(tab, result, argc - 1, &argv[1]);
 		select_method(tab, result, argc - 1, &argv[1]);
 	}
-	return (0);
+	return (E_SUCCES);
 }

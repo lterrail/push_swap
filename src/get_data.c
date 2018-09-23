@@ -6,7 +6,7 @@
 /*   By: lucien <lucien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/09 01:13:24 by lucien            #+#    #+#             */
-/*   Updated: 2018/06/18 19:03:07 by jsobel           ###   ########.fr       */
+/*   Updated: 2018/09/23 07:20:15 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int			get_min(t_push *a)
 	int		int_min;
 
 	tmp = a;
-	int_min = 2147483647;
+	int_min = INT_MAX;
 	while (tmp != NULL)
 	{
 		if (int_min > tmp->value)
@@ -33,7 +33,7 @@ int			get_max(t_push *a)
 	t_push	*tmp;
 	int		int_max;
 
-	int_max = -2147483648;
+	int_max = INT_MIN;
 	tmp = a;
 	while (tmp != NULL)
 	{
@@ -80,12 +80,12 @@ int			get_mediane(t_push *a, int len)
 	int		int_min;
 	int		mediane;
 
-	mediane = -2147483648;
+	mediane = INT_MIN;
 	tmp = a;
 	while (len > 0)
 	{
 		tmp = a;
-		int_min = 2147483647;
+		int_min = INT_MAX;
 		while (tmp != NULL)
 		{
 			if (int_min > tmp->value && tmp->value > mediane)

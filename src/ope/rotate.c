@@ -6,7 +6,7 @@
 /*   By: lucien <lucien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/08 16:27:58 by lucien            #+#    #+#             */
-/*   Updated: 2018/06/20 13:53:44 by jsobel           ###   ########.fr       */
+/*   Updated: 2018/09/23 07:14:54 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		ra(t_push **a)
 		if ((*a)->display)
 			ft_putendl("ra");
 	}
-	return (1);
+	return (E_SUCCES);
 }
 
 int		rb(t_push **b)
@@ -33,7 +33,7 @@ int		rb(t_push **b)
 		if ((*b)->display)
 			ft_putendl("rb");
 	}
-	return (1);
+	return (E_SUCCES);
 }
 
 int		rr(t_push **a, t_push **b)

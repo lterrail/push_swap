@@ -1,0 +1,32 @@
+valgrind ./checker "toto 15"
+valgrind ./checker "15 toto"
+valgrind ./checker "15456456456 15"
+valgrind ./checker "15 15151153153"
+
+valgrind ./checker toto 15
+valgrind ./checker 15 toto
+valgrind ./checker 15456456456 15
+valgrind ./checker 15 15151153153
+
+valgrind ./checker 15 "5 50" 8
+
+valgrind ./checker
+
+#valgrind ./checker 5 8 10 1
+wrong_instruction
+->check op casse
+
+
+
+
+valgrind ./push_swap "10 50 toto"
+valgrind ./push_swap "toto 10 50"
+valgrind ./push_swap "1213132312313 10 50"
+valgrind ./push_swap "10 50 1213132312313"
+
+#valgrind ./push_swap toto 10 50
+#valgrind ./push_swap 10 50 toto
+#valgrind ./push_swap 1230123013132 10 50
+#valgrind ./push_swap 10 50 1230123013132
+
+valgrind ./push_swap
