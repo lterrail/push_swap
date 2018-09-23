@@ -6,7 +6,7 @@
 #    By: lterrail <lterrail@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/04/05 16:05:37 by lterrail          #+#    #+#              #
-#    Updated: 2018/09/22 16:40:56 by lterrail         ###   ########.fr        #
+#    Updated: 2018/09/23 18:27:03 by lterrail         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -102,7 +102,8 @@ SRCS = 		ft_atoi.c			\
 			ft_strcat_char.c	\
 			ft_count_char.c		\
 			ft_buble_sort_tab.c	\
-			ft_putnbr_base.c
+			ft_putnbr_base.c	\
+			ft_tablen.c
 
 SRCS	+=	$(addprefix ft_printf/, $(FT_PRINTF_SRCS))
 
@@ -111,14 +112,19 @@ OBJS	=	$(addprefix srcs/, $(SRCS:.c=.o))
 $(NAME):	 $(OBJS)
 		@ar rc $(NAME) $(OBJS)
 		@ranlib $(NAME)
+		@printf "\n"
 
-all:		$(NAME)
+all:	$(NAME)
+
+%.o : %.c
+	@gcc -o $@ -c $< $(CFLAGS)
+	@printf "."
 
 clean:
-		$(RM) $(OBJS)
+	@$(RM) $(OBJS)
 
 fclean:	clean
-		$(RM) $(NAME)
+	@$(RM) $(NAME)
 
 re:		fclean all
 

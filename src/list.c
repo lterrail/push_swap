@@ -6,7 +6,7 @@
 /*   By: lterrail <lterrail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/19 16:07:03 by lterrail          #+#    #+#             */
-/*   Updated: 2018/09/23 13:24:10 by lterrail         ###   ########.fr       */
+/*   Updated: 2018/09/23 18:14:50 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,27 +60,20 @@ t_push		*ft_creat_list(int argc, char **argv, int display)
 	int		i;
 
 	p = NULL;
-	i = 0;
+	i = -1;
 	if (argc > 0)
 	{
-		while (argv[0][i])
-		{
+		while (argv[0][++i])
 			if (argv[0][0] != '-' && (argv[0][i] < '0' || argv[0][i] > '9'))
-			{
-				// ft_printf("{red}erreur {eoc}%s\n", argv[0]);
 				return (NULL);
-			}
-			// ft_printf("{blue}success {eoc}%s\n", argv[0]);
-			i++;
-		}
 		if (!(p = (t_push *)malloc(sizeof(t_push))))
 			return (NULL);
 		p->value = ft_atoi(argv[0]);
 		p->count = 0;
 		p->display = display;
 		p->next = NULL;
-		if (ft_bigger_than_integer(argv[0], p->value, i - 1)
-			|| (argc > 1 && !(p->next = ft_creat_list(argc - 1, &argv[1], display))))
+		if (ft_bigger_than_integer(argv[0], p->value, i - 1) || (argc > 1
+			&& !(p->next = ft_creat_list(argc - 1, &argv[1], display))))
 		{
 			free(p);
 			return (NULL);

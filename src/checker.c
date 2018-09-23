@@ -6,7 +6,7 @@
 /*   By: lterrail <lterrail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/19 16:06:45 by lterrail          #+#    #+#             */
-/*   Updated: 2018/09/23 13:24:06 by lterrail         ###   ########.fr       */
+/*   Updated: 2018/09/23 17:58:53 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,15 +23,11 @@ static t_push	*split_arg(char *tab)
 		return (NULL);
 	while (copie[i])
 		i++;
-	// ft_printf("{yellow}FIRST{eoc}\n");
 	if (!(a = ft_creat_list(i, copie, 0)))
 	{
-		// ft_printf("{yellow}SECOND{eoc}\n");
 		free_tab(copie);
 		return (NULL);
 	}
-	printf("a = %d\n", a->value);
-	// ft_printf("{yellow}THIRD{eoc}\n");
 	free_tab(copie);
 	return (a);
 }
@@ -44,9 +40,7 @@ static int		read_op(t_push **a, t_push **b)
 	{
 		if (ft_check_op(op, a, b) == E_ERROR)
 		{
-			printf("OP1 = %s\n", op);
 			free(op);
-			printf("OP2 = %s\n", op);
 			return (E_ERROR);
 		}
 		free(op);
@@ -65,10 +59,8 @@ int				main(int argc, char **argv)
 		return (0);
 	if (argc == 2 && ft_strchr(argv[1], ' '))
 	{
-		if (!(1 && (a = split_arg(argv[1]))))
-		{
+		if (!(a = split_arg(argv[1])))
 			return (ft_error_checker(a, "Error"));
-		}
 	}
 	else if (!(a = ft_creat_list(argc - 1, &argv[1], 0)))
 		return (ft_error_checker(a, "Error"));

@@ -6,7 +6,7 @@
 /*   By: lterrail <lterrail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/19 16:06:51 by lterrail          #+#    #+#             */
-/*   Updated: 2018/09/23 13:45:02 by lterrail         ###   ########.fr       */
+/*   Updated: 2018/09/23 17:49:40 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,8 @@ int		ft_error_push_swap(t_push *a, t_push *b, char *s, char **copie)
 	ft_free_list(&a);
 	if (b)
 		ft_free_list(&b);
-	free_tab(copie);
+	if (copie)
+		free_tab(copie);
 	write(2, s, ft_strlen(s));
 	write(2, "\n", 1);
 	exit (E_ERROR);

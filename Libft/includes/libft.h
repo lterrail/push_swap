@@ -6,7 +6,7 @@
 /*   By: lterrail <lterrail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 16:47:48 by lterrail          #+#    #+#             */
-/*   Updated: 2018/09/19 18:20:22 by lterrail         ###   ########.fr       */
+/*   Updated: 2018/09/23 18:45:06 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ char				*ft_strcpy_char(char *dest, const char *src, char c);
 char				*ft_strcat_char(char *dest, char *src, char c);
 int					ft_count_char(char *str, char c);
 char				**ft_buble_sort_tab(char **tab, int nb);
+int					ft_tablen(char **tab);
 
 typedef struct		s_list
 {

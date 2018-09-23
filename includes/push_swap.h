@@ -6,7 +6,7 @@
 /*   By: jsobel <jsobel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/06 18:32:07 by jsobel            #+#    #+#             */
-/*   Updated: 2018/09/23 08:35:32 by lterrail         ###   ########.fr       */
+/*   Updated: 2018/09/23 17:56:32 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 
-# define BUFF_SIZE  32
 # define SMALL_SIZE 4
 # define MEDIUM_SIZE 9
 # define E_SUCCES 1
@@ -61,12 +60,6 @@ void				free_tab(char **tab);
 
 void				end_reverse(t_push **a, t_push **b);
 void				simple_case(t_push **a, t_push **b);
-
-/*
-** push_swap -- get_next_line
-*/
-
-int					get_next_line(const int fd, char **line);
 
 /*
 ** push_swap -- operator
@@ -156,5 +149,18 @@ void				process_selec_sort_opti(t_push **a, t_push **b);
 int					opti_get_max_moins_un(t_push **a, int max_b);
 void				opti_place_ints_max(t_push **a, t_push **b, int ret);
 int					where_is_next(t_push *a, int mediane);
+
+/*
+** push_swap -- fill_results
+*/
+
+void				fill_result_malloc(void (*tab[5])(t_push **, t_push **),
+int result[5], int argc, char **argv);
+void				select_method_malloc(void (*tab[5])(t_push **, t_push **),
+int result[5], int argc, char **argv);
+void				fill_result_argv(void (*tab[5])(t_push **, t_push **),
+int result[5], int argc, char **argv);
+void				select_method_argv(void (*tab[5])(t_push **, t_push **),
+int result[5], int argc, char **argv);
 
 #endif

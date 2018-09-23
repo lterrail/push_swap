@@ -6,67 +6,13 @@
 /*   By: lterrail <lterrail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/19 16:07:09 by lterrail          #+#    #+#             */
-/*   Updated: 2018/09/23 11:03:02 by lterrail         ###   ########.fr       */
+/*   Updated: 2018/09/23 18:08:13 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	select_method(void (*tab[5])(t_push **, t_push **),
-int result[5], int argc, char **argv)
-{
-	int		min;
-	int		index;
-	t_push	*a;
-	t_push	*b;
-	int		i;
-
-	b = NULL;
-	min = INT_MAX;
-	i = 0;
-	while (i <= 4)
-	{
-		if (result[i] >= 0 && result[i] <= min)
-		{
-			min = result[i];
-			index = i;
-		}
-		i++;
-	}
-	if (!(a = ft_creat_list(argc, argv, 1)))
-		ft_error_push_swap(a, b, "Error", argv);
-	if (!ft_valid_list(a))
-		ft_error_push_swap(a, b, "Error", argv);
-	tab[index](&a, &b);
-	ft_free_list(&a);
-}
-
-static void	fill_result(void (*tab[5])(t_push **, t_push **),
-int result[5], int argc, char **argv)
-{
-	t_push	*a;
-	t_push	*b;
-	int		i;
-
-	b = NULL;
-	i = 0;
-	while (i <= 4)
-	{
-		if (!(a = ft_creat_list(argc, argv, 0)))
-			ft_error_push_swap(a, b, "Error", argv);
-		if (!ft_valid_list(a))
-			ft_error_push_swap(a, b, "Error", argv);
-		tab[i](&a, &b);
-		if (ft_is_sort_increasing(a) && !b)
-			result[i] = global_count(a);
-		else
-			result[i] = -1;
-		ft_free_list(&a);
-		i++;
-	}
-}
-
-static void	ft_init_tab(void (*tab[5])(t_push **, t_push **))
+static void		ft_init_tab(void (*tab[5])(t_push **, t_push **))
 {
 	tab[0] = &ft_process;
 	tab[1] = &ft_shaker;
@@ -75,7 +21,7 @@ static void	ft_init_tab(void (*tab[5])(t_push **, t_push **))
 	tab[4] = &shake_it_all;
 }
 
-int			main(int argc, char **argv)
+int				main(int argc, char **argv)
 {
 	void	(*tab[5])(t_push **, t_push **);
 	int		result[5];
@@ -89,17 +35,17 @@ int			main(int argc, char **argv)
 		return (E_ERROR);
 	if (argc == 2 && ft_strchr(argv[1], ' '))
 	{
-		copie = ft_strsplit(argv[1], ' ');
-		while (copie[i])
-			i++;
-		fill_result(tab, result, i, copie);
-		select_method(tab, result, i, copie);
+		if (!(copie = ft_strsplit(argv[1], ' ')))
+			return (E_ERROR);
+		i = ft_tablen(copie);
+		fill_result_malloc(tab, result, i, copie);
+		select_method_malloc(tab, result, i, copie);
 		free_tab(copie);
 	}
 	else
 	{
-		fill_result(tab, result, argc - 1, &argv[1]);
-		select_method(tab, result, argc - 1, &argv[1]);
+		fill_result_argv(tab, result, argc - 1, &argv[1]);
+		select_method_argv(tab, result, argc - 1, &argv[1]);
 	}
 	return (E_SUCCES);
 }
