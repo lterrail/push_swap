@@ -6,72 +6,63 @@
 /*   By: lterrail <lterrail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/03 16:36:16 by lterrail          #+#    #+#             */
-/*   Updated: 2018/04/11 17:44:29 by lterrail         ###   ########.fr       */
+/*   Updated: 2018/09/23 19:12:34 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_count_words(const char *s, char c)
+static int		ft_split2(const char *str, char **tab, char c, int size)
 {
+	int	i_tab;
+	int	n;
 	int	i;
-	int	words;
 
 	i = 0;
-	words = 0;
-	while (s[i] == c)
-		i++;
-	while (s[i])
+	i_tab = 0;
+	while (str[i] && i_tab < size)
 	{
-		if ((s[i] == c && s[i + 1] != c) || s[i + 1] == '\0')
-			words++;
-		i++;
+		while (str[i] && c == str[i])
+			i++;
+		n = 0;
+		while (str[i + n] && c != str[i + n])
+			n++;
+		if (!(tab[i_tab] = malloc(n + 1)))
+			return (0);
+		n = 0;
+		while (str[i] && c != str[i])
+		{
+			tab[i_tab][n] = str[i++];
+			n++;
+		}
+		tab[i_tab++][n] = '\0';
 	}
-	return (words);
+	tab[size] = NULL;
+	return (1);
 }
 
-static int		ft_count_letters(const char *s, char c)
+char			**ft_strsplit(const char *str, char c)
 {
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (s[i] == c)
-		i++;
-	while (s[i] != c && s[i])
-	{
-		j++;
-		i++;
-	}
-	return (j);
-}
-
-char			**ft_strsplit(char const *s, char c)
-{
-	int		i_mots;
-	int		tot_mots;
-	int		ligne;
 	char	**tab;
+	int		tab_size;
 	int		i;
 
 	i = 0;
-	i_mots = 0;
-	if (!s)
+	tab_size = 0;
+	if (!str)
 		return (NULL);
-	tot_mots = ft_count_words(s, c);
-	if (!(tab = malloc(sizeof(char *) * (tot_mots + 1))))
-		return (0);
-	while (i_mots < tot_mots)
+	while (str[i])
 	{
-		while (s[i] == c)
+		while (str[i] && c == str[i])
 			i++;
-		tab[i_mots] = malloc(sizeof(char) * (ft_count_letters(s + i, c) + 1));
-		ligne = 0;
-		while (s[i] && s[i] != c)
-			tab[i_mots][ligne++] = s[i++];
-		tab[i_mots++][ligne] = '\0';
+		if (str[i])
+			tab_size++;
+		while (str[i] && c != str[i])
+			i++;
 	}
-	tab[i_mots] = 0;
+	if (!(tab = malloc(sizeof(char *) * (tab_size + 1))))
+		return (NULL);
+	if (!ft_split2(str, tab, c, tab_size))
+		return (NULL);
 	return (tab);
 }

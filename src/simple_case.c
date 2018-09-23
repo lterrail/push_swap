@@ -6,13 +6,13 @@
 /*   By: lterrail <lterrail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/19 16:07:21 by lterrail          #+#    #+#             */
-/*   Updated: 2018/09/19 16:07:22 by lterrail         ###   ########.fr       */
+/*   Updated: 2018/09/23 19:16:06 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	end_reverse(t_push **a, t_push **b)
+void		end_reverse(t_push **a, t_push **b)
 {
 	int len;
 	int flag;
@@ -40,7 +40,7 @@ void	end_reverse(t_push **a, t_push **b)
 	}
 }
 
-void	simple_case(t_push **a, t_push **b)
+void		simple_case(t_push **a, t_push **b)
 {
 	int len;
 

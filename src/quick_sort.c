@@ -6,13 +6,13 @@
 /*   By: lucien <lucien@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/06/10 00:12:58 by lucien            #+#    #+#             */
-/*   Updated: 2018/06/26 17:46:26 by jsobel           ###   ########.fr       */
+/*   Updated: 2018/09/23 19:15:53 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	process_distri_pyramid(t_push **a, t_push **b)
+void		process_distri_pyramid(t_push **a, t_push **b)
 {
 	int		div_mediane;
 	int		len;
@@ -40,7 +40,7 @@ void	process_distri_pyramid(t_push **a, t_push **b)
 		process_distri_pyramid(a, b);
 }
 
-void	process_selec_sort_opti(t_push **a, t_push **b)
+void		process_selec_sort_opti(t_push **a, t_push **b)
 {
 	int		max;
 	int		max2;
@@ -68,7 +68,7 @@ void	process_selec_sort_opti(t_push **a, t_push **b)
 	}
 }
 
-int		where_is_next(t_push *a, int mediane)
+int			where_is_next(t_push *a, int mediane)
 {
 	t_push	*tmp;
 	t_push	*start;
@@ -95,7 +95,7 @@ int		where_is_next(t_push *a, int mediane)
 	return (0);
 }
 
-int		opti_get_max_moins_un(t_push **a, int max_b)
+int			opti_get_max_moins_un(t_push **a, int max_b)
 {
 	t_push	*tmp;
 	int		int_max;
@@ -111,7 +111,7 @@ int		opti_get_max_moins_un(t_push **a, int max_b)
 	return (int_max);
 }
 
-void	opti_place_ints_max(t_push **a, t_push **b, int ret)
+void		opti_place_ints_max(t_push **a, t_push **b, int ret)
 {
 	int ret2;
 

@@ -6,13 +6,13 @@
 /*   By: lterrail <lterrail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/19 16:07:16 by lterrail          #+#    #+#             */
-/*   Updated: 2018/09/19 16:07:17 by lterrail         ###   ########.fr       */
+/*   Updated: 2018/09/23 19:16:01 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	shake_it_all_2(t_push **a, t_push **b)
+void		shake_it_all_2(t_push **a, t_push **b)
 {
 	while (*b && !(ft_is_sort_decreasing(*b)
 	&& (!*a || (*a)->value > (*b)->value)))
@@ -29,7 +29,7 @@ void	shake_it_all_2(t_push **a, t_push **b)
 	}
 }
 
-void	shake_it_all(t_push **a, t_push **b)
+void		shake_it_all(t_push **a, t_push **b)
 {
 	while (*a && !(ft_is_sort_increasing(*a)
 	&& (!*b || (*a)->value > (*b)->value)))
@@ -49,7 +49,7 @@ void	shake_it_all(t_push **a, t_push **b)
 		shake_it_all(a, b);
 }
 
-int		divide_to_conquer(t_push **a, t_push **b, int med)
+int			divide_to_conquer(t_push **a, t_push **b, int med)
 {
 	int		flag;
 	t_push	*tmp;
@@ -75,7 +75,7 @@ int		divide_to_conquer(t_push **a, t_push **b, int med)
 	return (0);
 }
 
-void	ft_shaker(t_push **a, t_push **b)
+void		ft_shaker(t_push **a, t_push **b)
 {
 	int	i;
 	int	med;

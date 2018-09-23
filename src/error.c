@@ -6,7 +6,7 @@
 /*   By: lterrail <lterrail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/19 16:06:51 by lterrail          #+#    #+#             */
-/*   Updated: 2018/09/23 17:49:40 by lterrail         ###   ########.fr       */
+/*   Updated: 2018/09/23 19:15:18 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void		free_tab(char **tab)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (tab[i])
@@ -27,8 +27,8 @@ void		free_tab(char **tab)
 
 void		ft_free_list(t_push **begin_list)
 {
-	t_push *delete;
-	t_push *tmp;
+	t_push	*delete;
+	t_push	*tmp;
 
 	tmp = *begin_list;
 	while (tmp)
@@ -39,7 +39,7 @@ void		ft_free_list(t_push **begin_list)
 	}
 }
 
-int		ft_error_checker(t_push *a, char *s)
+int			ft_error_checker(t_push *a, char *s)
 {
 	ft_free_list(&a);
 	write(2, s, ft_strlen(s));
@@ -47,7 +47,7 @@ int		ft_error_checker(t_push *a, char *s)
 	return (E_ERROR);
 }
 
-int		ft_error_push_swap(t_push *a, t_push *b, char *s, char **copie)
+int			ft_error_push_swap(t_push *a, t_push *b, char *s, char **copie)
 {
 	ft_free_list(&a);
 	if (b)
