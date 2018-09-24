@@ -14,8 +14,6 @@ valgrind ./checker 15 "5 50" 8
 
 valgrind ./checker
 
-valgrind ./checker 5 8 10 1
-
 
 
 

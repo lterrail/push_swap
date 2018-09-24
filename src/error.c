@@ -6,7 +6,7 @@
 /*   By: lterrail <lterrail@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/09/19 16:06:51 by lterrail          #+#    #+#             */
-/*   Updated: 2018/09/23 19:15:18 by lterrail         ###   ########.fr       */
+/*   Updated: 2018/09/24 18:31:44 by lterrail         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,5 @@ int			ft_error_push_swap(t_push *a, t_push *b, char *s, char **copie)
 		free_tab(copie);
 	write(2, s, ft_strlen(s));
 	write(2, "\n", 1);
-	exit (E_ERROR);
+	exit(E_ERROR);
 }
